@@ -1,0 +1,936 @@
+[
+  {
+    "issue": 25008,
+    "group": "A1: stack trace names the fixed file",
+    "title": "core.utils.ValidationError Invalid character _ in the collection title: Mosin_es_testing URL requested",
+    "fixed": [
+      "core/domain/collection_domain.py",
+      "core/utils.py"
+    ],
+    "results": {
+      "keyword": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 1,
+        "top": [
+          "core/utils.py",
+          "core/domain/collection_services.py",
+          "core/controllers/acl_decorators.py",
+          "core/domain/collection_domain.py",
+          "core/controllers/collection_editor.py"
+        ]
+      },
+      "graph": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 2,
+        "top": [
+          "core/domain/collection_services.py",
+          "core/utils.py",
+          "core/controllers/collection_editor.py",
+          "core/domain/collection_domain.py",
+          "core/controllers/acl_decorators.py"
+        ]
+      },
+      "graph + keyword": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 2,
+        "top": [
+          "core/domain/collection_services.py",
+          "core/utils.py",
+          "core/controllers/collection_editor.py",
+          "core/domain/collection_domain.py",
+          "core/controllers/acl_decorators.py"
+        ]
+      }
+    }
+  },
+  {
+    "issue": 23033,
+    "group": "A1: stack trace names the fixed file",
+    "title": "Exception Email to translation.reviewer@gmail.com failed to send",
+    "fixed": [
+      "core/domain/email_manager.py"
+    ],
+    "results": {
+      "keyword": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 1,
+        "top": [
+          "core/domain/email_manager.py",
+          "core/controllers/tasks.py",
+          "core/controllers/acl_decorators.py",
+          "core/domain/email_services.py",
+          "core/platform/transactions/cloud_transaction_services.py"
+        ]
+      },
+      "graph": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 2,
+        "top": [
+          "core/controllers/tasks.py",
+          "core/domain/email_manager.py",
+          "core/domain/email_services.py",
+          "core/platform/transactions/cloud_transaction_services.py",
+          "core/controllers/acl_decorators.py"
+        ]
+      },
+      "graph + keyword": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 1,
+        "top": [
+          "core/domain/email_manager.py",
+          "core/controllers/tasks.py",
+          "core/domain/email_services.py",
+          "core/controllers/acl_decorators.py",
+          "core/platform/transactions/cloud_transaction_services.py"
+        ]
+      }
+    }
+  },
+  {
+    "issue": 22277,
+    "group": "A1: stack trace names the fixed file",
+    "title": "ValueError: invalid literal for int() with base 10",
+    "fixed": [
+      "core/controllers/blog_homepage.py"
+    ],
+    "results": {
+      "keyword": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 2,
+        "top": [
+          "core/controllers/acl_decorators.py",
+          "core/controllers/blog_homepage.py",
+          "core/feconf.py",
+          "core/controllers/base.py",
+          "main.py"
+        ]
+      },
+      "graph": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 2,
+        "top": [
+          "core/controllers/acl_decorators.py",
+          "core/controllers/blog_homepage.py",
+          "core/android_validation_constants.py",
+          "core/controllers/base.py",
+          "core/domain/android_services.py"
+        ]
+      },
+      "graph + keyword": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 2,
+        "top": [
+          "core/controllers/acl_decorators.py",
+          "core/controllers/blog_homepage.py",
+          "core/feconf.py",
+          "core/controllers/base.py",
+          "core/domain/email_manager.py"
+        ]
+      }
+    }
+  },
+  {
+    "issue": 21878,
+    "group": "A1: stack trace names the fixed file",
+    "title": "Expected translation count for language_code ar to be less than or equal to content_count(225), received 226",
+    "fixed": [
+      "core/domain/opportunity_services.py",
+      "core/domain/suggestion_services.py"
+    ],
+    "results": {
+      "keyword": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 1,
+        "top": [
+          "core/domain/suggestion_services.py",
+          "core/domain/suggestion_registry.py",
+          "core/controllers/suggestion.py",
+          "core/controllers/acl_decorators.py",
+          "core/domain/opportunity_services.py"
+        ]
+      },
+      "graph": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 1,
+        "top": [
+          "core/domain/opportunity_services.py",
+          "core/domain/suggestion_services.py",
+          "core/domain/opportunity_domain.py",
+          "core/domain/suggestion_registry.py",
+          "core/controllers/acl_decorators.py"
+        ]
+      },
+      "graph + keyword": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 1,
+        "top": [
+          "core/domain/suggestion_services.py",
+          "core/domain/opportunity_services.py",
+          "core/domain/suggestion_registry.py",
+          "core/controllers/acl_decorators.py",
+          "core/domain/opportunity_domain.py"
+        ]
+      }
+    }
+  },
+  {
+    "issue": 21883,
+    "group": "A2: stack trace names a different file",
+    "title": "InvalidInputException in the pretest_handler",
+    "fixed": [
+      "core/controllers/base.py"
+    ],
+    "results": {
+      "keyword": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 5,
+        "top": [
+          "core/controllers/reader.py",
+          "core/controllers/acl_decorators.py",
+          "core/feconf.py",
+          "core/domain/email_manager.py",
+          "core/controllers/base.py"
+        ]
+      },
+      "graph": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 2,
+        "top": [
+          "core/controllers/acl_decorators.py",
+          "core/controllers/base.py",
+          "core/controllers/reader.py",
+          "core/utils.py",
+          "core/controllers/domain_objects_validator.py"
+        ]
+      },
+      "graph + keyword": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 3,
+        "top": [
+          "core/controllers/acl_decorators.py",
+          "core/controllers/reader.py",
+          "core/controllers/base.py",
+          "core/utils.py",
+          "core/feconf.py"
+        ]
+      }
+    }
+  },
+  {
+    "issue": 20148,
+    "group": "A2: stack trace names a different file",
+    "title": "core.controllers.base.UserFacingExceptions.NotFoundException",
+    "fixed": [
+      "core/controllers/base.py"
+    ],
+    "results": {
+      "keyword": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 4,
+        "top": [
+          "core/controllers/reader.py",
+          "core/controllers/acl_decorators.py",
+          "core/feconf.py",
+          "core/controllers/base.py",
+          "main.py"
+        ]
+      },
+      "graph": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 3,
+        "top": [
+          "core/controllers/acl_decorators.py",
+          "core/controllers/reader.py",
+          "core/controllers/base.py",
+          "core/controllers/domain_objects_validator.py",
+          "core/controllers/editor.py"
+        ]
+      },
+      "graph + keyword": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 3,
+        "top": [
+          "core/controllers/acl_decorators.py",
+          "core/controllers/reader.py",
+          "core/controllers/base.py",
+          "core/feconf.py",
+          "core/domain/email_manager.py"
+        ]
+      }
+    }
+  },
+  {
+    "issue": 18371,
+    "group": "A2: stack trace names a different file",
+    "title": "Schema validation for 'answer' failed: Type of <decimal number> is not present in options ",
+    "fixed": [
+      "core/controllers/reader.py"
+    ],
+    "results": {
+      "keyword": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 3,
+        "top": [
+          "core/controllers/base.py",
+          "core/feconf.py",
+          "core/controllers/reader.py",
+          "core/domain/exp_services.py",
+          "core/schema_utils.py"
+        ]
+      },
+      "graph": {
+        "hit": false,
+        "recall": 0.0,
+        "first_rank": null,
+        "top": [
+          "core/controllers/base.py",
+          "core/utils.py",
+          "core/domain/state_domain.py",
+          "core/domain/exp_domain.py",
+          "core/domain/exp_services.py"
+        ]
+      },
+      "graph + keyword": {
+        "hit": false,
+        "recall": 0.0,
+        "first_rank": 22,
+        "top": [
+          "core/controllers/base.py",
+          "core/utils.py",
+          "core/domain/exp_services.py",
+          "core/feconf.py",
+          "core/domain/stats_domain.py"
+        ]
+      }
+    }
+  },
+  {
+    "issue": 23330,
+    "group": "B: no file named",
+    "title": "[BUG]: Unable to add users to custom group in release coordinator page.",
+    "fixed": [
+      "core/domain/user_services.py"
+    ],
+    "results": {
+      "keyword": {
+        "hit": false,
+        "recall": 0.0,
+        "first_rank": 8,
+        "top": [
+          "core/feconf.py",
+          "core/domain/email_manager.py",
+          "core/controllers/admin.py",
+          "core/controllers/base.py",
+          "core/domain/exp_services.py"
+        ]
+      },
+      "graph": {
+        "hit": false,
+        "recall": 0.0,
+        "first_rank": null,
+        "top": [
+          "core/domain/beam_job_domain.py",
+          "core/domain/beam_job_services.py"
+        ]
+      },
+      "graph + keyword": {
+        "hit": false,
+        "recall": 0.0,
+        "first_rank": 8,
+        "top": [
+          "core/feconf.py",
+          "core/domain/email_manager.py",
+          "core/controllers/admin.py",
+          "core/controllers/base.py",
+          "core/domain/exp_services.py"
+        ]
+      }
+    }
+  },
+  {
+    "issue": 25307,
+    "group": "B: no file named",
+    "title": "[Feature Request]: Improve retry mechanism for email sending based on error type",
+    "fixed": [
+      "core/controllers/tasks.py",
+      "core/domain/email_services.py",
+      "core/platform/email/mailgun_email_services.py"
+    ],
+    "results": {
+      "keyword": {
+        "hit": true,
+        "recall": 0.3333333333333333,
+        "first_rank": 1,
+        "top": [
+          "core/controllers/tasks.py",
+          "core/domain/email_manager.py",
+          "core/feconf.py",
+          "core/controllers/base.py",
+          "core/platform/auth/firebase_auth_services.py"
+        ]
+      },
+      "graph": {
+        "hit": true,
+        "recall": 0.3333333333333333,
+        "first_rank": 1,
+        "top": [
+          "core/controllers/tasks.py",
+          "core/domain/email_manager.py",
+          "core/feconf.py",
+          "main.py",
+          "core/controllers/base.py"
+        ]
+      },
+      "graph + keyword": {
+        "hit": true,
+        "recall": 0.3333333333333333,
+        "first_rank": 1,
+        "top": [
+          "core/controllers/tasks.py",
+          "core/domain/email_manager.py",
+          "core/feconf.py",
+          "main.py",
+          "core/controllers/base.py"
+        ]
+      }
+    }
+  },
+  {
+    "issue": 24588,
+    "group": "B: no file named",
+    "title": "[BUG]: Generate dummy chapters fails with \"Entity for class StoryModel with id story_id not found\"",
+    "fixed": [
+      "core/controllers/admin.py"
+    ],
+    "results": {
+      "keyword": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 2,
+        "top": [
+          "core/feconf.py",
+          "core/controllers/admin.py",
+          "core/domain/email_manager.py",
+          "core/domain/android_services.py",
+          "core/domain/exp_services.py"
+        ]
+      },
+      "graph": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 2,
+        "top": [
+          "core/storage/story/gae_models.py",
+          "core/controllers/admin.py",
+          "core/controllers/topic_editor.py",
+          "core/storage/user/gae_models.py",
+          "core/storage/base_model/gae_models.py"
+        ]
+      },
+      "graph + keyword": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 1,
+        "top": [
+          "core/controllers/admin.py",
+          "core/feconf.py",
+          "core/controllers/topic_editor.py",
+          "core/storage/base_model/gae_models.py",
+          "core/storage/user/gae_models.py"
+        ]
+      }
+    }
+  },
+  {
+    "issue": 24315,
+    "group": "B: no file named",
+    "title": "[BUG]: Admin \u201cGenerate dummy translation opportunities\u201d fails when Dummy Skill exists with non-`dummySkillId`",
+    "fixed": [
+      "core/controllers/admin.py"
+    ],
+    "results": {
+      "keyword": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 2,
+        "top": [
+          "core/feconf.py",
+          "core/controllers/admin.py",
+          "core/domain/android_services.py",
+          "core/utils.py",
+          "core/domain/email_manager.py"
+        ]
+      },
+      "graph": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 4,
+        "top": [
+          "core/domain/user_services.py",
+          "core/feconf.py",
+          "core/domain/skill_services.py",
+          "core/controllers/admin.py",
+          "core/controllers/profile.py"
+        ]
+      },
+      "graph + keyword": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 3,
+        "top": [
+          "core/feconf.py",
+          "core/domain/user_services.py",
+          "core/controllers/admin.py",
+          "core/domain/skill_services.py",
+          "core/controllers/profile.py"
+        ]
+      }
+    }
+  },
+  {
+    "issue": 22999,
+    "group": "B: no file named",
+    "title": "[BUG]: \"Feedback\" replies in \"Exploration Editor\" do not update until page refresh",
+    "fixed": [
+      "core/domain/feedback_services.py"
+    ],
+    "results": {
+      "keyword": {
+        "hit": false,
+        "recall": 0.0,
+        "first_rank": 10,
+        "top": [
+          "core/feconf.py",
+          "core/domain/email_manager.py",
+          "main.py",
+          "core/platform/auth/firebase_auth_services.py",
+          "core/domain/android_services.py"
+        ]
+      },
+      "graph": {
+        "hit": false,
+        "recall": 0.0,
+        "first_rank": null,
+        "top": []
+      },
+      "graph + keyword": {
+        "hit": false,
+        "recall": 0.0,
+        "first_rank": 10,
+        "top": [
+          "core/feconf.py",
+          "core/domain/email_manager.py",
+          "main.py",
+          "core/platform/auth/firebase_auth_services.py",
+          "core/domain/android_services.py"
+        ]
+      }
+    }
+  },
+  {
+    "issue": 24470,
+    "group": "B: no file named",
+    "title": "[BUG]: Draft chapters are currently included in the total chapter count .",
+    "fixed": [
+      "core/domain/topic_fetchers.py"
+    ],
+    "results": {
+      "keyword": {
+        "hit": false,
+        "recall": 0.0,
+        "first_rank": null,
+        "top": [
+          "core/feconf.py",
+          "core/domain/email_manager.py",
+          "core/controllers/admin.py",
+          "core/domain/android_services.py",
+          "core/feature_flag_list.py"
+        ]
+      },
+      "graph": {
+        "hit": false,
+        "recall": 0.0,
+        "first_rank": null,
+        "top": [
+          "core/controllers/story_viewer.py",
+          "core/domain/story_fetchers.py",
+          "core/controllers/admin.py",
+          "core/feature_flag_list.py"
+        ]
+      },
+      "graph + keyword": {
+        "hit": false,
+        "recall": 0.0,
+        "first_rank": null,
+        "top": [
+          "core/controllers/admin.py",
+          "core/feature_flag_list.py",
+          "core/controllers/story_viewer.py",
+          "core/domain/story_fetchers.py",
+          "core/feconf.py"
+        ]
+      }
+    }
+  },
+  {
+    "issue": 24156,
+    "group": "B: no file named",
+    "title": "[BUG]: Draft Lessons should not be shown on the Learner Dashboard",
+    "fixed": [
+      "core/controllers/story_viewer.py",
+      "core/domain/story_fetchers.py"
+    ],
+    "results": {
+      "keyword": {
+        "hit": false,
+        "recall": 0.0,
+        "first_rank": 28,
+        "top": [
+          "core/feconf.py",
+          "core/domain/email_manager.py",
+          "main.py",
+          "core/domain/exp_services.py",
+          "core/controllers/admin.py"
+        ]
+      },
+      "graph": {
+        "hit": true,
+        "recall": 0.5,
+        "first_rank": 2,
+        "top": [
+          "core/controllers/admin.py",
+          "core/controllers/story_viewer.py",
+          "core/feature_flag_list.py"
+        ]
+      },
+      "graph + keyword": {
+        "hit": true,
+        "recall": 0.5,
+        "first_rank": 5,
+        "top": [
+          "core/controllers/admin.py",
+          "core/feature_flag_list.py",
+          "core/feconf.py",
+          "core/domain/email_manager.py",
+          "core/controllers/story_viewer.py"
+        ]
+      }
+    }
+  },
+  {
+    "issue": 23440,
+    "group": "B: no file named",
+    "title": "[Feature Request]: Add Science topics to the dropdown menu for reviewers",
+    "fixed": [
+      "core/controllers/contributor_dashboard.py"
+    ],
+    "results": {
+      "keyword": {
+        "hit": false,
+        "recall": 0.0,
+        "first_rank": 49,
+        "top": [
+          "core/domain/android_services.py",
+          "core/controllers/admin.py",
+          "core/feconf.py",
+          "core/domain/email_manager.py",
+          "core/platform/search/elastic_search_services.py"
+        ]
+      },
+      "graph": {
+        "hit": false,
+        "recall": 0.0,
+        "first_rank": null,
+        "top": []
+      },
+      "graph + keyword": {
+        "hit": false,
+        "recall": 0.0,
+        "first_rank": 49,
+        "top": [
+          "core/domain/android_services.py",
+          "core/controllers/admin.py",
+          "core/feconf.py",
+          "core/domain/email_manager.py",
+          "core/platform/search/elastic_search_services.py"
+        ]
+      }
+    }
+  },
+  {
+    "issue": 22479,
+    "group": "B: no file named",
+    "title": "[BUG]: Generating chapter is not visible in topic viewer page.",
+    "fixed": [
+      "core/controllers/admin.py"
+    ],
+    "results": {
+      "keyword": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 3,
+        "top": [
+          "core/feconf.py",
+          "core/domain/email_manager.py",
+          "core/controllers/admin.py",
+          "main.py",
+          "core/domain/android_services.py"
+        ]
+      },
+      "graph": {
+        "hit": false,
+        "recall": 0.0,
+        "first_rank": null,
+        "top": []
+      },
+      "graph + keyword": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 3,
+        "top": [
+          "core/feconf.py",
+          "core/domain/email_manager.py",
+          "core/controllers/admin.py",
+          "main.py",
+          "core/domain/android_services.py"
+        ]
+      }
+    }
+  },
+  {
+    "issue": 23492,
+    "group": "B: no file named",
+    "title": "[BUG]: Goal becomes completed even after having uncompleted Lessons",
+    "fixed": [
+      "core/domain/learner_progress_services.py",
+      "core/domain/topic_fetchers.py"
+    ],
+    "results": {
+      "keyword": {
+        "hit": false,
+        "recall": 0.0,
+        "first_rank": 10,
+        "top": [
+          "core/feconf.py",
+          "core/domain/email_manager.py",
+          "core/domain/exp_services.py",
+          "main.py",
+          "core/controllers/admin.py"
+        ]
+      },
+      "graph": {
+        "hit": false,
+        "recall": 0.0,
+        "first_rank": null,
+        "top": []
+      },
+      "graph + keyword": {
+        "hit": false,
+        "recall": 0.0,
+        "first_rank": 10,
+        "top": [
+          "core/feconf.py",
+          "core/domain/email_manager.py",
+          "core/domain/exp_services.py",
+          "main.py",
+          "core/controllers/admin.py"
+        ]
+      }
+    }
+  },
+  {
+    "issue": 22109,
+    "group": "B: no file named",
+    "title": "[BUG]: [Object object] error occurs when editing topic name as a topic manager",
+    "fixed": [
+      "core/controllers/topic_editor.py",
+      "core/controllers/topic_viewer.py",
+      "main.py"
+    ],
+    "results": {
+      "keyword": {
+        "hit": false,
+        "recall": 0.0,
+        "first_rank": 8,
+        "top": [
+          "core/feconf.py",
+          "core/domain/email_manager.py",
+          "core/controllers/admin.py",
+          "core/domain/android_services.py",
+          "core/domain/exp_services.py"
+        ]
+      },
+      "graph": {
+        "hit": false,
+        "recall": 0.0,
+        "first_rank": null,
+        "top": []
+      },
+      "graph + keyword": {
+        "hit": false,
+        "recall": 0.0,
+        "first_rank": 8,
+        "top": [
+          "core/feconf.py",
+          "core/domain/email_manager.py",
+          "core/controllers/admin.py",
+          "core/domain/android_services.py",
+          "core/domain/exp_services.py"
+        ]
+      }
+    }
+  },
+  {
+    "issue": 21841,
+    "group": "B: no file named",
+    "title": "Improve Stackdriver backend error logs",
+    "fixed": [
+      "core/controllers/base.py"
+    ],
+    "results": {
+      "keyword": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 3,
+        "top": [
+          "core/storage/statistics/gae_models.py",
+          "core/feconf.py",
+          "core/controllers/base.py",
+          "core/storage/exploration/gae_models.py",
+          "main.py"
+        ]
+      },
+      "graph": {
+        "hit": false,
+        "recall": 0.0,
+        "first_rank": null,
+        "top": []
+      },
+      "graph + keyword": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 3,
+        "top": [
+          "core/storage/statistics/gae_models.py",
+          "core/feconf.py",
+          "core/controllers/base.py",
+          "core/storage/exploration/gae_models.py",
+          "main.py"
+        ]
+      }
+    }
+  },
+  {
+    "issue": 22726,
+    "group": "C: file named without a trace",
+    "title": "[BUG]: Unexpected mismatch between clean and original html while sending email for testing",
+    "fixed": [
+      "core/domain/email_manager.py",
+      "core/domain/platform_parameter_registry.py",
+      "core/feconf.py"
+    ],
+    "results": {
+      "keyword": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 1,
+        "top": [
+          "core/domain/email_manager.py",
+          "core/feconf.py",
+          "core/controllers/tasks.py",
+          "core/domain/platform_parameter_registry.py",
+          "core/controllers/base.py"
+        ]
+      },
+      "graph": {
+        "hit": true,
+        "recall": 0.3333333333333333,
+        "first_rank": 1,
+        "top": [
+          "core/domain/email_manager.py",
+          "core/controllers/oppia_root.py",
+          "core/controllers/tasks.py",
+          "core/domain/change_domain.py",
+          "core/domain/email_services.py"
+        ]
+      },
+      "graph + keyword": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 1,
+        "top": [
+          "core/domain/email_manager.py",
+          "core/feconf.py",
+          "core/controllers/tasks.py",
+          "core/domain/platform_parameter_registry.py",
+          "core/domain/email_services.py"
+        ]
+      }
+    }
+  },
+  {
+    "issue": 25518,
+    "group": "C: file named without a trace",
+    "title": "[Feature Request]: On Web switch android controller to use the new StudyGuideModels.",
+    "fixed": [
+      "core/controllers/android.py"
+    ],
+    "results": {
+      "keyword": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 1,
+        "top": [
+          "core/controllers/android.py",
+          "core/feconf.py",
+          "core/controllers/admin.py",
+          "core/domain/android_services.py",
+          "main.py"
+        ]
+      },
+      "graph": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 1,
+        "top": [
+          "core/controllers/android.py",
+          "core/domain/subtopic_page_domain.py",
+          "core/domain/topic_services.py",
+          "core/controllers/base.py",
+          "core/domain/android_services.py"
+        ]
+      },
+      "graph + keyword": {
+        "hit": true,
+        "recall": 1.0,
+        "first_rank": 1,
+        "top": [
+          "core/controllers/android.py",
+          "core/domain/subtopic_page_domain.py",
+          "core/feconf.py",
+          "core/domain/topic_services.py",
+          "core/domain/android_services.py"
+        ]
+      }
+    }
+  }
+]
