@@ -11,6 +11,7 @@ FALKOR_PORT = int(os.environ["FALKOR_PORT"])
 FALKOR_USERNAME = os.environ.get("FALKOR_USERNAME") or None
 FALKOR_PASSWORD = os.environ.get("FALKOR_PASSWORD") or None
 OPPIA_REPO = os.environ["OPPIA_REPO"]
+GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
 
 GRAPH_NAME = "repograph"
 # Branch read from the Oppia clone: the official repository, not a fork,
