@@ -115,6 +115,38 @@ def show_triage_board():
         st.code(TRIAGE_QUERY.strip(), language="cypher")
 
 
+# How much each kind of evidence can be trusted, and where it comes from.
+# An edge records a link; it does not prove two files are related in meaning.
+EVIDENCE_INFO = {
+    "issue_text_path": ("direct", "issue text",
+                        "The issue names this file, e.g. in a stack trace."),
+    "todo_comment": ("direct", "code comment",
+                     "A developer left TODO(#issue) in this file."),
+    "issue_text_symbol": ("direct", "issue text + parsed code",
+                          "A name in the issue matches a function here; "
+                          "common names can match by chance."),
+    "parent_issue_fix": ("related", "git history + GitHub parent link",
+                         "The parent issue's fix changed this file. Same "
+                         "area, not necessarily the same bug."),
+    "sibling_issue_fix": ("related", "git history + GitHub parent link",
+                          "A sibling issue's fix changed this file. Same "
+                          "area, not necessarily the same bug."),
+    "similar_issue_fix": ("weak", "title similarity + git history",
+                          "Only shared title words link the two issues."),
+    "route_to_handler": ("structural", "route table in main.py",
+                         "A URL constant used by a strong file routes here."),
+    "imports_1_hop": ("structural", "imports (parsed code or registry map)",
+                      "Linked by an import, which shows a dependency, not "
+                      "that this file is involved."),
+    "imports_2_hops": ("structural", "imports (parsed code or registry map)",
+                       "Two imports away; a loose link."),
+    "co_changed": ("weak", "git co-change statistics",
+                   "Often changed in the same commits; a correlation."),
+}
+TIER_ICON = {"direct": "🟢", "related": "🟡", "structural": "🔵",
+             "weak": "⚪"}
+
+
 def mark(path, fixed):
     return " ✅ changed by the real fix" if path in fixed else ""
 
@@ -168,11 +200,19 @@ with tabs[0]:
     if fixed:
         st.caption("✅ marks files the real fix changed. The investigation "
                    "did not see that fix.")
+    st.caption("Evidence: 🟢 direct · 🟡 related issue · 🔵 structural "
+               "(imports, routes) · ⚪ weak (co-change, title words). An "
+               "edge records a link; it is not proof the files are related "
+               "in meaning.")
     for rank, item in enumerate(result["files"], start=1):
         with st.expander(f"{rank}. {item['path']} · score {item['score']}"
                          f"{mark(item['path'], fixed)}", expanded=rank <= 3):
             for reason in item["evidence"][:6]:
-                st.markdown(f"- `{reason['kind']}` {reason['detail']}")
+                tier, source, caveat = EVIDENCE_INFO.get(
+                    reason["kind"], ("weak", "graph", ""))
+                st.markdown(f"- {TIER_ICON[tier]} **{tier}** . {source}: "
+                            f"{reason['detail']}")
+                st.caption(f"{reason['kind']} . {caveat}")
             for test in item["tests"]:
                 target = test["test"][:-len(".py")].replace("/", ".")
                 st.code("python -m scripts.run_backend_tests "

@@ -1,0 +1,1673 @@
+[
+ {
+  "issue": 8704,
+  "title": "Add acceptance tests for question editor modal which was recently added in the PR #8538",
+  "fixed": [
+   "core/controllers/question_editor.py"
+  ],
+  "graph_evidence": false,
+  "results": {
+   "keyword": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": 44,
+    "top": [
+     "core/feconf.py",
+     "core/feature_flag_list.py",
+     "core/controllers/feature_flag.py",
+     "core/controllers/reader.py",
+     "core/domain/user_services.py"
+    ]
+   },
+   "graph": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": null,
+    "top": []
+   },
+   "graph + keyword": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": 44,
+    "top": [
+     "core/feconf.py",
+     "core/feature_flag_list.py",
+     "core/controllers/feature_flag.py",
+     "core/controllers/reader.py",
+     "core/domain/user_services.py"
+    ]
+   },
+   "graph + keyword (gated)": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": 44,
+    "top": [
+     "core/feconf.py",
+     "core/feature_flag_list.py",
+     "core/controllers/feature_flag.py",
+     "core/controllers/reader.py",
+     "core/domain/user_services.py"
+    ]
+   }
+  }
+ },
+ {
+  "issue": 11736,
+  "title": "Fix issue in `GeneralFeedbackThreadModelAuditOneOffJob`",
+  "fixed": [
+   "core/jobs/batch_jobs/audit_threads_with_missing_suggestions_jobs.py",
+   "core/jobs/registry.py"
+  ],
+  "graph_evidence": true,
+  "results": {
+   "keyword": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": 21,
+    "top": [
+     "core/domain/wipeout_service.py",
+     "core/jobs/batch_jobs/contributor_admin_stats_jobs.py",
+     "core/feconf.py",
+     "core/domain/opportunity_services.py",
+     "core/domain/feedback_services.py"
+    ]
+   },
+   "graph": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": null,
+    "top": [
+     "core/storage/feedback/gae_models.py",
+     "core/storage/suggestion/gae_models.py",
+     "core/domain/change_domain.py",
+     "core/domain/feedback_domain.py",
+     "core/storage/user/gae_models.py"
+    ]
+   },
+   "graph + keyword": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": 68,
+    "top": [
+     "core/storage/suggestion/gae_models.py",
+     "core/storage/feedback/gae_models.py",
+     "core/feconf.py",
+     "core/storage/user/gae_models.py",
+     "core/platform/models.py"
+    ]
+   },
+   "graph + keyword (gated)": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": 68,
+    "top": [
+     "core/storage/suggestion/gae_models.py",
+     "core/storage/feedback/gae_models.py",
+     "core/feconf.py",
+     "core/storage/user/gae_models.py",
+     "core/platform/models.py"
+    ]
+   }
+  }
+ },
+ {
+  "issue": 12735,
+  "title": "[Contributor Experience] Add separate email preferences option for contributor dashboard related emails ",
+  "fixed": [
+   "core/controllers/profile.py",
+   "core/domain/user_domain.py",
+   "core/domain/user_services.py",
+   "core/domain/wipeout_service.py",
+   "core/feconf.py",
+   "core/storage/user/gae_models.py"
+  ],
+  "graph_evidence": false,
+  "results": {
+   "keyword": {
+    "hit": true,
+    "recall": 0.3333333333333333,
+    "first_rank": 2,
+    "top": [
+     "core/domain/email_manager.py",
+     "core/feconf.py",
+     "core/domain/user_services.py",
+     "core/domain/platform_parameter_registry.py",
+     "core/platform/bulk_email/mailchimp_bulk_email_services.py"
+    ]
+   },
+   "graph": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": null,
+    "top": []
+   },
+   "graph + keyword": {
+    "hit": true,
+    "recall": 0.3333333333333333,
+    "first_rank": 2,
+    "top": [
+     "core/domain/email_manager.py",
+     "core/feconf.py",
+     "core/domain/user_services.py",
+     "core/domain/platform_parameter_registry.py",
+     "core/platform/bulk_email/mailchimp_bulk_email_services.py"
+    ]
+   },
+   "graph + keyword (gated)": {
+    "hit": true,
+    "recall": 0.3333333333333333,
+    "first_rank": 2,
+    "top": [
+     "core/domain/email_manager.py",
+     "core/feconf.py",
+     "core/domain/user_services.py",
+     "core/domain/platform_parameter_registry.py",
+     "core/platform/bulk_email/mailchimp_bulk_email_services.py"
+    ]
+   }
+  }
+ },
+ {
+  "issue": 14971,
+  "title": "`GeneralFeedbackMessageModel.thread_id` sometimes references nonexistent `GeneralFeedbackThreadModel`",
+  "fixed": [
+   "core/domain/feedback_services.py",
+   "core/jobs/batch_jobs/audit_non_existent_threads_messages_jobs.py",
+   "core/jobs/registry.py"
+  ],
+  "graph_evidence": true,
+  "results": {
+   "keyword": {
+    "hit": true,
+    "recall": 0.3333333333333333,
+    "first_rank": 3,
+    "top": [
+     "core/feconf.py",
+     "core/storage/feedback/gae_models.py",
+     "core/domain/feedback_services.py",
+     "core/storage/exploration/gae_models.py",
+     "core/controllers/tasks.py"
+    ]
+   },
+   "graph": {
+    "hit": true,
+    "recall": 0.3333333333333333,
+    "first_rank": 2,
+    "top": [
+     "core/storage/feedback/gae_models.py",
+     "core/domain/feedback_services.py",
+     "core/controllers/feedback.py",
+     "core/domain/opportunity_services.py",
+     "core/controllers/tasks.py"
+    ]
+   },
+   "graph + keyword": {
+    "hit": true,
+    "recall": 0.3333333333333333,
+    "first_rank": 2,
+    "top": [
+     "core/storage/feedback/gae_models.py",
+     "core/domain/feedback_services.py",
+     "core/feconf.py",
+     "core/domain/opportunity_services.py",
+     "core/storage/exploration/gae_models.py"
+    ]
+   },
+   "graph + keyword (gated)": {
+    "hit": true,
+    "recall": 0.3333333333333333,
+    "first_rank": 2,
+    "top": [
+     "core/storage/feedback/gae_models.py",
+     "core/domain/feedback_services.py",
+     "core/feconf.py",
+     "core/domain/opportunity_services.py",
+     "core/storage/exploration/gae_models.py"
+    ]
+   }
+  }
+ },
+ {
+  "issue": 18305,
+  "title": "Restructure the revision cards",
+  "fixed": [
+   "core/controllers/admin.py",
+   "core/domain/study_guide_services.py",
+   "core/domain/topic_services.py",
+   "core/feconf.py",
+   "core/jobs/batch_jobs/populate_study_guide_models_jobs.py",
+   "core/jobs/registry.py",
+   "main.py"
+  ],
+  "graph_evidence": true,
+  "results": {
+   "keyword": {
+    "hit": true,
+    "recall": 0.42857142857142855,
+    "first_rank": 1,
+    "top": [
+     "core/feconf.py",
+     "core/feature_flag_list.py",
+     "core/domain/topic_services.py",
+     "core/controllers/admin.py",
+     "core/domain/exp_domain.py"
+    ]
+   },
+   "graph": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": 46,
+    "top": [
+     "core/storage/subtopic/gae_models.py",
+     "core/storage/base_model/gae_models.py",
+     "core/platform/datastore/cloud_datastore_services.py",
+     "core/constants.py",
+     "core/platform/models.py"
+    ]
+   },
+   "graph + keyword": {
+    "hit": true,
+    "recall": 0.2857142857142857,
+    "first_rank": 1,
+    "top": [
+     "core/feconf.py",
+     "core/storage/subtopic/gae_models.py",
+     "core/controllers/admin.py",
+     "core/storage/base_model/gae_models.py",
+     "core/storage/app_feedback_report/gae_models.py"
+    ]
+   },
+   "graph + keyword (gated)": {
+    "hit": true,
+    "recall": 0.2857142857142857,
+    "first_rank": 1,
+    "top": [
+     "core/feconf.py",
+     "core/storage/subtopic/gae_models.py",
+     "core/controllers/admin.py",
+     "core/storage/base_model/gae_models.py",
+     "core/storage/app_feedback_report/gae_models.py"
+    ]
+   }
+  }
+ },
+ {
+  "issue": 18519,
+  "title": "[Feature Request]: Enable practice question admins/coordinators to edit questions directly.",
+  "fixed": [
+   "core/controllers/acl_decorators.py",
+   "core/controllers/topic_editor.py",
+   "core/controllers/topics_and_skills_dashboard.py",
+   "core/domain/role_services.py",
+   "core/domain/topic_domain.py",
+   "core/domain/topic_services.py"
+  ],
+  "graph_evidence": false,
+  "results": {
+   "keyword": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": 7,
+    "top": [
+     "core/feconf.py",
+     "core/domain/email_manager.py",
+     "main.py",
+     "core/controllers/admin.py",
+     "core/controllers/contributor_dashboard_admin.py"
+    ]
+   },
+   "graph": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": null,
+    "top": []
+   },
+   "graph + keyword": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": 7,
+    "top": [
+     "core/feconf.py",
+     "core/domain/email_manager.py",
+     "main.py",
+     "core/controllers/admin.py",
+     "core/controllers/contributor_dashboard_admin.py"
+    ]
+   },
+   "graph + keyword (gated)": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": 7,
+    "top": [
+     "core/feconf.py",
+     "core/domain/email_manager.py",
+     "main.py",
+     "core/controllers/admin.py",
+     "core/controllers/contributor_dashboard_admin.py"
+    ]
+   }
+  }
+ },
+ {
+  "issue": 18523,
+  "title": "[Feature Request]: Add validation checks that should be applied to stories prior to publication",
+  "fixed": [
+   "core/controllers/admin.py"
+  ],
+  "graph_evidence": false,
+  "results": {
+   "keyword": {
+    "hit": true,
+    "recall": 1.0,
+    "first_rank": 5,
+    "top": [
+     "core/domain/story_services.py",
+     "core/domain/story_domain.py",
+     "core/domain/email_manager.py",
+     "core/domain/exp_services.py",
+     "core/controllers/admin.py"
+    ]
+   },
+   "graph": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": null,
+    "top": []
+   },
+   "graph + keyword": {
+    "hit": true,
+    "recall": 1.0,
+    "first_rank": 5,
+    "top": [
+     "core/domain/story_services.py",
+     "core/domain/story_domain.py",
+     "core/domain/email_manager.py",
+     "core/domain/exp_services.py",
+     "core/controllers/admin.py"
+    ]
+   },
+   "graph + keyword (gated)": {
+    "hit": true,
+    "recall": 1.0,
+    "first_rank": 5,
+    "top": [
+     "core/domain/story_services.py",
+     "core/domain/story_domain.py",
+     "core/domain/email_manager.py",
+     "core/domain/exp_services.py",
+     "core/controllers/admin.py"
+    ]
+   }
+  }
+ },
+ {
+  "issue": 18535,
+  "title": "[Feature Request]: Drop flags for checkpoint_celebration and end_chapter_celebration",
+  "fixed": [
+   "core/feature_flag_list.py"
+  ],
+  "graph_evidence": false,
+  "results": {
+   "keyword": {
+    "hit": true,
+    "recall": 1.0,
+    "first_rank": 1,
+    "top": [
+     "core/feature_flag_list.py",
+     "core/feconf.py",
+     "core/domain/exp_domain.py",
+     "core/domain/state_domain.py",
+     "main.py"
+    ]
+   },
+   "graph": {
+    "hit": true,
+    "recall": 1.0,
+    "first_rank": 1,
+    "top": [
+     "core/feature_flag_list.py"
+    ]
+   },
+   "graph + keyword": {
+    "hit": true,
+    "recall": 1.0,
+    "first_rank": 1,
+    "top": [
+     "core/feature_flag_list.py",
+     "core/feconf.py",
+     "core/domain/exp_domain.py",
+     "core/domain/state_domain.py",
+     "main.py"
+    ]
+   },
+   "graph + keyword (gated)": {
+    "hit": true,
+    "recall": 1.0,
+    "first_rank": 1,
+    "top": [
+     "core/feature_flag_list.py",
+     "core/feconf.py",
+     "core/domain/exp_domain.py",
+     "core/domain/state_domain.py",
+     "main.py"
+    ]
+   }
+  }
+ },
+ {
+  "issue": 19075,
+  "title": "[BUG]: Skill opportunity progress bar doesn't show percentage of questions awaiting review",
+  "fixed": [
+   "core/controllers/contributor_dashboard.py",
+   "core/domain/suggestion_services.py",
+   "core/storage/suggestion/gae_models.py"
+  ],
+  "graph_evidence": false,
+  "results": {
+   "keyword": {
+    "hit": true,
+    "recall": 0.3333333333333333,
+    "first_rank": 4,
+    "top": [
+     "core/feconf.py",
+     "core/domain/email_manager.py",
+     "core/controllers/admin.py",
+     "core/domain/suggestion_services.py",
+     "main.py"
+    ]
+   },
+   "graph": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": null,
+    "top": [
+     "core/controllers/payload_validator.py"
+    ]
+   },
+   "graph + keyword": {
+    "hit": true,
+    "recall": 0.3333333333333333,
+    "first_rank": 4,
+    "top": [
+     "core/feconf.py",
+     "core/domain/email_manager.py",
+     "core/controllers/admin.py",
+     "core/domain/suggestion_services.py",
+     "main.py"
+    ]
+   },
+   "graph + keyword (gated)": {
+    "hit": true,
+    "recall": 0.3333333333333333,
+    "first_rank": 4,
+    "top": [
+     "core/feconf.py",
+     "core/domain/email_manager.py",
+     "core/controllers/admin.py",
+     "core/domain/suggestion_services.py",
+     "main.py"
+    ]
+   }
+  }
+ },
+ {
+  "issue": 19154,
+  "title": "[BUG, blocked on angular migration being completed]: Remove core/templates/pages/error-pages/error-page.module.ts once angular migration is complete",
+  "fixed": [
+   "core/controllers/base.py"
+  ],
+  "graph_evidence": false,
+  "results": {
+   "keyword": {
+    "hit": true,
+    "recall": 1.0,
+    "first_rank": 2,
+    "top": [
+     "core/feconf.py",
+     "core/controllers/base.py",
+     "core/domain/email_manager.py",
+     "core/domain/exp_services.py",
+     "core/storage/base_model/gae_models.py"
+    ]
+   },
+   "graph": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": null,
+    "top": []
+   },
+   "graph + keyword": {
+    "hit": true,
+    "recall": 1.0,
+    "first_rank": 2,
+    "top": [
+     "core/feconf.py",
+     "core/controllers/base.py",
+     "core/domain/email_manager.py",
+     "core/domain/exp_services.py",
+     "core/storage/base_model/gae_models.py"
+    ]
+   },
+   "graph + keyword (gated)": {
+    "hit": true,
+    "recall": 1.0,
+    "first_rank": 2,
+    "top": [
+     "core/feconf.py",
+     "core/controllers/base.py",
+     "core/domain/email_manager.py",
+     "core/domain/exp_services.py",
+     "core/storage/base_model/gae_models.py"
+    ]
+   }
+  }
+ },
+ {
+  "issue": 19173,
+  "title": "[Feature Request]: DropDown Pagination for Translation Reviewer Tab (Contributor Dashboard)",
+  "fixed": [
+   "core/controllers/contributor_dashboard.py",
+   "core/domain/opportunity_services.py",
+   "core/feature_flag_list.py",
+   "core/feconf.py",
+   "core/storage/opportunity/gae_models.py",
+   "main.py"
+  ],
+  "graph_evidence": false,
+  "results": {
+   "keyword": {
+    "hit": true,
+    "recall": 0.16666666666666666,
+    "first_rank": 1,
+    "top": [
+     "core/feconf.py",
+     "core/domain/email_manager.py",
+     "core/jobs/batch_jobs/contributor_admin_stats_jobs.py",
+     "core/domain/android_services.py",
+     "core/storage/suggestion/gae_models.py"
+    ]
+   },
+   "graph": {
+    "hit": true,
+    "recall": 0.16666666666666666,
+    "first_rank": 5,
+    "top": [
+     "core/controllers/suggestion.py",
+     "core/domain/suggestion_services.py",
+     "core/handler_schema_constants.py",
+     "core/storage/suggestion/gae_models.py",
+     "core/controllers/contributor_dashboard.py"
+    ]
+   },
+   "graph + keyword": {
+    "hit": true,
+    "recall": 0.16666666666666666,
+    "first_rank": 4,
+    "top": [
+     "core/storage/suggestion/gae_models.py",
+     "core/domain/suggestion_services.py",
+     "core/controllers/suggestion.py",
+     "core/feconf.py",
+     "core/domain/email_manager.py"
+    ]
+   },
+   "graph + keyword (gated)": {
+    "hit": true,
+    "recall": 0.16666666666666666,
+    "first_rank": 1,
+    "top": [
+     "core/feconf.py",
+     "core/domain/email_manager.py",
+     "core/jobs/batch_jobs/contributor_admin_stats_jobs.py",
+     "core/domain/android_services.py",
+     "core/storage/suggestion/gae_models.py"
+    ]
+   }
+  }
+ },
+ {
+  "issue": 19417,
+  "title": "[Feature Request]: Blog Page state should remain same on refresh",
+  "fixed": [
+   "core/controllers/blog_homepage.py",
+   "core/domain/blog_services.py"
+  ],
+  "graph_evidence": false,
+  "results": {
+   "keyword": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": 25,
+    "top": [
+     "core/feconf.py",
+     "core/domain/exp_services.py",
+     "core/domain/android_services.py",
+     "core/platform/search/elastic_search_services.py",
+     "core/domain/email_manager.py"
+    ]
+   },
+   "graph": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": null,
+    "top": []
+   },
+   "graph + keyword": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": 25,
+    "top": [
+     "core/feconf.py",
+     "core/domain/exp_services.py",
+     "core/domain/android_services.py",
+     "core/platform/search/elastic_search_services.py",
+     "core/domain/email_manager.py"
+    ]
+   },
+   "graph + keyword (gated)": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": 25,
+    "top": [
+     "core/feconf.py",
+     "core/domain/exp_services.py",
+     "core/domain/android_services.py",
+     "core/platform/search/elastic_search_services.py",
+     "core/domain/email_manager.py"
+    ]
+   }
+  }
+ },
+ {
+  "issue": 19636,
+  "title": "Run audit jobs on the server for validations of UserSettings",
+  "fixed": [
+   "core/jobs/batch_jobs/user_bios_change_jobs.py",
+   "core/jobs/registry.py"
+  ],
+  "graph_evidence": true,
+  "results": {
+   "keyword": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": null,
+    "top": [
+     "core/feconf.py",
+     "core/controllers/base.py",
+     "core/jobs/job_test_utils.py",
+     "core/platform/bulk_email/mailchimp_bulk_email_services.py",
+     "core/storage/exploration/gae_models.py"
+    ]
+   },
+   "graph": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": null,
+    "top": [
+     "core/feconf.py",
+     "core/controllers/contributor_dashboard.py",
+     "core/domain/suggestion_registry.py",
+     "core/domain/suggestion_services.py",
+     "core/domain/user_domain.py"
+    ]
+   },
+   "graph + keyword": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": null,
+    "top": [
+     "core/feconf.py",
+     "core/domain/user_domain.py",
+     "core/controllers/base.py",
+     "core/utils.py",
+     "core/domain/exp_domain.py"
+    ]
+   },
+   "graph + keyword (gated)": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": null,
+    "top": [
+     "core/feconf.py",
+     "core/domain/user_domain.py",
+     "core/controllers/base.py",
+     "core/utils.py",
+     "core/domain/exp_domain.py"
+    ]
+   }
+  }
+ },
+ {
+  "issue": 19851,
+  "title": "[Feature Request]: Create a new \"worked examples\" RTE component and deprecate the corresponding field in the skill editor.",
+  "fixed": [
+   "core/feature_flag_list.py"
+  ],
+  "graph_evidence": true,
+  "results": {
+   "keyword": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": 6,
+    "top": [
+     "main.py",
+     "core/feconf.py",
+     "core/domain/state_domain.py",
+     "core/domain/exp_domain.py",
+     "core/controllers/admin.py"
+    ]
+   },
+   "graph": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": null,
+    "top": [
+     "main.py",
+     "core/storage/skill/gae_models.py",
+     "core/storage/user/gae_models.py",
+     "core/storage/base_model/gae_models.py",
+     "core/platform/datastore/cloud_datastore_services.py"
+    ]
+   },
+   "graph + keyword": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": 50,
+    "top": [
+     "main.py",
+     "core/feconf.py",
+     "core/storage/user/gae_models.py",
+     "core/storage/base_model/gae_models.py",
+     "core/controllers/admin.py"
+    ]
+   },
+   "graph + keyword (gated)": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": 50,
+    "top": [
+     "main.py",
+     "core/feconf.py",
+     "core/storage/user/gae_models.py",
+     "core/storage/base_model/gae_models.py",
+     "core/controllers/admin.py"
+    ]
+   }
+  }
+ },
+ {
+  "issue": 20015,
+  "title": "[BUG]: Some explorations have duplicated content IDs",
+  "fixed": [
+   "core/jobs/batch_jobs/delete_duplicate_content_ids_jobs.py",
+   "core/jobs/registry.py"
+  ],
+  "graph_evidence": false,
+  "results": {
+   "keyword": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": null,
+    "top": [
+     "core/feconf.py",
+     "core/domain/email_manager.py",
+     "core/domain/exp_services.py",
+     "core/domain/exp_domain.py",
+     "core/domain/state_domain.py"
+    ]
+   },
+   "graph": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": null,
+    "top": [
+     "core/controllers/suggestion.py"
+    ]
+   },
+   "graph + keyword": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": null,
+    "top": [
+     "core/feconf.py",
+     "core/domain/email_manager.py",
+     "core/controllers/suggestion.py",
+     "core/domain/exp_services.py",
+     "core/domain/exp_domain.py"
+    ]
+   },
+   "graph + keyword (gated)": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": null,
+    "top": [
+     "core/feconf.py",
+     "core/domain/email_manager.py",
+     "core/domain/exp_services.py",
+     "core/domain/exp_domain.py",
+     "core/domain/state_domain.py"
+    ]
+   }
+  }
+ },
+ {
+  "issue": 20124,
+  "title": "[BUG]: Running AuditGenerateContributorAdminStatsJob throws a ValueError",
+  "fixed": [
+   "core/jobs/batch_jobs/contributor_admin_stats_jobs.py"
+  ],
+  "graph_evidence": true,
+  "results": {
+   "keyword": {
+    "hit": true,
+    "recall": 1.0,
+    "first_rank": 1,
+    "top": [
+     "core/jobs/batch_jobs/contributor_admin_stats_jobs.py",
+     "core/feconf.py",
+     "core/domain/email_manager.py",
+     "main.py",
+     "core/controllers/admin.py"
+    ]
+   },
+   "graph": {
+    "hit": true,
+    "recall": 1.0,
+    "first_rank": 1,
+    "top": [
+     "core/jobs/batch_jobs/contributor_admin_stats_jobs.py",
+     "core/domain/opportunity_services.py",
+     "core/domain/story_fetchers.py",
+     "core/domain/topic_fetchers.py",
+     "core/storage/opportunity/gae_models.py"
+    ]
+   },
+   "graph + keyword": {
+    "hit": true,
+    "recall": 1.0,
+    "first_rank": 1,
+    "top": [
+     "core/jobs/batch_jobs/contributor_admin_stats_jobs.py",
+     "core/feconf.py",
+     "core/domain/exp_services.py",
+     "core/storage/suggestion/gae_models.py",
+     "core/platform/auth/firebase_auth_services.py"
+    ]
+   },
+   "graph + keyword (gated)": {
+    "hit": true,
+    "recall": 1.0,
+    "first_rank": 1,
+    "top": [
+     "core/jobs/batch_jobs/contributor_admin_stats_jobs.py",
+     "core/feconf.py",
+     "core/domain/exp_services.py",
+     "core/storage/suggestion/gae_models.py",
+     "core/platform/auth/firebase_auth_services.py"
+    ]
+   }
+  }
+ },
+ {
+  "issue": 20197,
+  "title": "[BUG]: 404 Not Found error on valid collection player page.",
+  "fixed": [
+   "main.py"
+  ],
+  "graph_evidence": false,
+  "results": {
+   "keyword": {
+    "hit": true,
+    "recall": 1.0,
+    "first_rank": 5,
+    "top": [
+     "core/feconf.py",
+     "core/domain/email_manager.py",
+     "core/controllers/admin.py",
+     "core/domain/exp_services.py",
+     "main.py"
+    ]
+   },
+   "graph": {
+    "hit": true,
+    "recall": 1.0,
+    "first_rank": 4,
+    "top": [
+     "core/controllers/topics_and_skills_dashboard.py",
+     "core/domain/skill_domain.py",
+     "core/domain/skill_services.py",
+     "main.py"
+    ]
+   },
+   "graph + keyword": {
+    "hit": true,
+    "recall": 1.0,
+    "first_rank": 1,
+    "top": [
+     "main.py",
+     "core/feconf.py",
+     "core/domain/skill_domain.py",
+     "core/domain/email_manager.py",
+     "core/controllers/admin.py"
+    ]
+   },
+   "graph + keyword (gated)": {
+    "hit": true,
+    "recall": 1.0,
+    "first_rank": 5,
+    "top": [
+     "core/feconf.py",
+     "core/domain/email_manager.py",
+     "core/controllers/admin.py",
+     "core/domain/exp_services.py",
+     "main.py"
+    ]
+   }
+  }
+ },
+ {
+  "issue": 20332,
+  "title": "Beam job to audit Topic and related to models to ensure they are valid",
+  "fixed": [
+   "core/jobs/batch_jobs/audit_topic_related_models_relation_jobs.py",
+   "core/jobs/registry.py"
+  ],
+  "graph_evidence": true,
+  "results": {
+   "keyword": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": null,
+    "top": [
+     "core/feconf.py",
+     "core/domain/email_manager.py",
+     "core/controllers/base.py",
+     "core/domain/exp_services.py",
+     "core/jobs/batch_jobs/manual_voice_artist_name_job.py"
+    ]
+   },
+   "graph": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": null,
+    "top": [
+     "core/storage/topic/gae_models.py",
+     "core/domain/suggestion_registry.py",
+     "core/domain/suggestion_services.py",
+     "core/jobs/batch_jobs/suggestion_stats_computation_jobs.py",
+     "core/storage/user/gae_models.py"
+    ]
+   },
+   "graph + keyword": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": null,
+    "top": [
+     "core/feconf.py",
+     "core/domain/suggestion_services.py",
+     "core/domain/suggestion_registry.py",
+     "core/domain/email_manager.py",
+     "core/storage/base_model/gae_models.py"
+    ]
+   },
+   "graph + keyword (gated)": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": null,
+    "top": [
+     "core/feconf.py",
+     "core/domain/suggestion_services.py",
+     "core/domain/suggestion_registry.py",
+     "core/domain/email_manager.py",
+     "core/storage/base_model/gae_models.py"
+    ]
+   }
+  }
+ },
+ {
+  "issue": 20818,
+  "title": "[BUG]: The generate dummy topic feature on the admin page is not creating a topic properly",
+  "fixed": [
+   "core/controllers/admin.py",
+   "core/controllers/topic_editor.py"
+  ],
+  "graph_evidence": false,
+  "results": {
+   "keyword": {
+    "hit": true,
+    "recall": 0.5,
+    "first_rank": 2,
+    "top": [
+     "core/feconf.py",
+     "core/controllers/admin.py",
+     "core/domain/email_manager.py",
+     "core/domain/android_services.py",
+     "main.py"
+    ]
+   },
+   "graph": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": null,
+    "top": []
+   },
+   "graph + keyword": {
+    "hit": true,
+    "recall": 0.5,
+    "first_rank": 2,
+    "top": [
+     "core/feconf.py",
+     "core/controllers/admin.py",
+     "core/domain/email_manager.py",
+     "core/domain/android_services.py",
+     "main.py"
+    ]
+   },
+   "graph + keyword (gated)": {
+    "hit": true,
+    "recall": 0.5,
+    "first_rank": 2,
+    "top": [
+     "core/feconf.py",
+     "core/controllers/admin.py",
+     "core/domain/email_manager.py",
+     "core/domain/android_services.py",
+     "main.py"
+    ]
+   }
+  }
+ },
+ {
+  "issue": 21017,
+  "title": "[BUG]: Perform state schema migration on exp data obtained from cache",
+  "fixed": [
+   "core/domain/exp_domain.py"
+  ],
+  "graph_evidence": true,
+  "results": {
+   "keyword": {
+    "hit": true,
+    "recall": 1.0,
+    "first_rank": 1,
+    "top": [
+     "core/domain/exp_domain.py",
+     "core/feconf.py",
+     "core/domain/email_manager.py",
+     "core/storage/statistics/gae_models.py",
+     "core/domain/exp_services.py"
+    ]
+   },
+   "graph": {
+    "hit": true,
+    "recall": 1.0,
+    "first_rank": 1,
+    "top": [
+     "core/domain/exp_domain.py",
+     "core/domain/html_cleaner.py",
+     "core/domain/state_domain.py",
+     "core/schema_utils.py",
+     "core/storage/exploration/gae_models.py"
+    ]
+   },
+   "graph + keyword": {
+    "hit": true,
+    "recall": 1.0,
+    "first_rank": 1,
+    "top": [
+     "core/domain/exp_domain.py",
+     "core/feconf.py",
+     "core/utils.py",
+     "core/storage/exploration/gae_models.py",
+     "core/domain/email_manager.py"
+    ]
+   },
+   "graph + keyword (gated)": {
+    "hit": true,
+    "recall": 1.0,
+    "first_rank": 1,
+    "top": [
+     "core/domain/exp_domain.py",
+     "core/feconf.py",
+     "core/utils.py",
+     "core/storage/exploration/gae_models.py",
+     "core/domain/email_manager.py"
+    ]
+   }
+  }
+ },
+ {
+  "issue": 21030,
+  "title": "[Feature Request]: Upgrade ElasticSearch from 7.17.0 to 8.15.2",
+  "fixed": [
+   "core/feconf.py",
+   "core/platform/search/elastic_search_services.py"
+  ],
+  "graph_evidence": false,
+  "results": {
+   "keyword": {
+    "hit": true,
+    "recall": 0.5,
+    "first_rank": 1,
+    "top": [
+     "core/feconf.py",
+     "core/domain/email_manager.py",
+     "core/controllers/admin.py",
+     "core/feature_flag_list.py",
+     "core/domain/android_services.py"
+    ]
+   },
+   "graph": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": null,
+    "top": [
+     "core/jobs/batch_jobs/user_bios_change_jobs.py",
+     "core/jobs/registry.py"
+    ]
+   },
+   "graph + keyword": {
+    "hit": true,
+    "recall": 0.5,
+    "first_rank": 1,
+    "top": [
+     "core/feconf.py",
+     "core/domain/email_manager.py",
+     "core/controllers/admin.py",
+     "core/feature_flag_list.py",
+     "core/domain/android_services.py"
+    ]
+   },
+   "graph + keyword (gated)": {
+    "hit": true,
+    "recall": 0.5,
+    "first_rank": 1,
+    "top": [
+     "core/feconf.py",
+     "core/domain/email_manager.py",
+     "core/controllers/admin.py",
+     "core/feature_flag_list.py",
+     "core/domain/android_services.py"
+    ]
+   }
+  }
+ },
+ {
+  "issue": 21087,
+  "title": "[BUG]: Removing picture is allowed when reviewing translation",
+  "fixed": [
+   "core/domain/suggestion_services.py"
+  ],
+  "graph_evidence": false,
+  "results": {
+   "keyword": {
+    "hit": true,
+    "recall": 1.0,
+    "first_rank": 3,
+    "top": [
+     "core/domain/email_manager.py",
+     "core/feconf.py",
+     "core/domain/suggestion_services.py",
+     "core/controllers/suggestion.py",
+     "core/domain/user_services.py"
+    ]
+   },
+   "graph": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": null,
+    "top": [
+     "core/domain/opportunity_services.py",
+     "core/domain/translation_domain.py",
+     "core/domain/translation_services.py",
+     "core/jobs/batch_jobs/opportunity_management_jobs.py"
+    ]
+   },
+   "graph + keyword": {
+    "hit": true,
+    "recall": 1.0,
+    "first_rank": 4,
+    "top": [
+     "core/domain/email_manager.py",
+     "core/feconf.py",
+     "core/domain/translation_domain.py",
+     "core/domain/suggestion_services.py",
+     "core/controllers/suggestion.py"
+    ]
+   },
+   "graph + keyword (gated)": {
+    "hit": true,
+    "recall": 1.0,
+    "first_rank": 3,
+    "top": [
+     "core/domain/email_manager.py",
+     "core/feconf.py",
+     "core/domain/suggestion_services.py",
+     "core/controllers/suggestion.py",
+     "core/domain/user_services.py"
+    ]
+   }
+  }
+ },
+ {
+  "issue": 21091,
+  "title": "[Feature Request]: Diagnostic test enable/disable option from classroom admin page",
+  "fixed": [
+   "core/controllers/admin.py",
+   "core/controllers/classroom.py",
+   "core/domain/classroom_config_domain.py",
+   "core/domain/classroom_config_services.py",
+   "core/feconf.py",
+   "core/storage/classroom/gae_models.py"
+  ],
+  "graph_evidence": false,
+  "results": {
+   "keyword": {
+    "hit": true,
+    "recall": 0.3333333333333333,
+    "first_rank": 1,
+    "top": [
+     "core/feconf.py",
+     "core/domain/email_manager.py",
+     "core/domain/android_services.py",
+     "core/controllers/admin.py",
+     "main.py"
+    ]
+   },
+   "graph": {
+    "hit": true,
+    "recall": 0.16666666666666666,
+    "first_rank": 1,
+    "top": [
+     "core/controllers/admin.py"
+    ]
+   },
+   "graph + keyword": {
+    "hit": true,
+    "recall": 0.3333333333333333,
+    "first_rank": 1,
+    "top": [
+     "core/controllers/admin.py",
+     "core/feconf.py",
+     "core/domain/email_manager.py",
+     "core/domain/android_services.py",
+     "main.py"
+    ]
+   },
+   "graph + keyword (gated)": {
+    "hit": true,
+    "recall": 0.3333333333333333,
+    "first_rank": 1,
+    "top": [
+     "core/feconf.py",
+     "core/domain/email_manager.py",
+     "core/domain/android_services.py",
+     "core/controllers/admin.py",
+     "main.py"
+    ]
+   }
+  }
+ },
+ {
+  "issue": 21247,
+  "title": "[Feature Request]: Filter contribution/review opportunities on the basis of classrooms",
+  "fixed": [
+   "core/controllers/contributor_dashboard.py",
+   "main.py"
+  ],
+  "graph_evidence": false,
+  "results": {
+   "keyword": {
+    "hit": true,
+    "recall": 0.5,
+    "first_rank": 4,
+    "top": [
+     "core/feconf.py",
+     "core/domain/android_services.py",
+     "core/controllers/admin.py",
+     "core/controllers/contributor_dashboard.py",
+     "core/domain/email_manager.py"
+    ]
+   },
+   "graph": {
+    "hit": true,
+    "recall": 0.5,
+    "first_rank": 2,
+    "top": [
+     "core/controllers/admin.py",
+     "core/controllers/contributor_dashboard.py"
+    ]
+   },
+   "graph + keyword": {
+    "hit": true,
+    "recall": 0.5,
+    "first_rank": 2,
+    "top": [
+     "core/controllers/admin.py",
+     "core/controllers/contributor_dashboard.py",
+     "core/feconf.py",
+     "core/domain/android_services.py",
+     "core/domain/email_manager.py"
+    ]
+   },
+   "graph + keyword (gated)": {
+    "hit": true,
+    "recall": 0.5,
+    "first_rank": 4,
+    "top": [
+     "core/feconf.py",
+     "core/domain/android_services.py",
+     "core/controllers/admin.py",
+     "core/controllers/contributor_dashboard.py",
+     "core/domain/email_manager.py"
+    ]
+   }
+  }
+ },
+ {
+  "issue": 21429,
+  "title": "[Feature Request]: Restrict Special Characters in Autogenerated Image Filenames for Security and Compatibility",
+  "fixed": [
+   "core/controllers/editor.py",
+   "core/utils.py"
+  ],
+  "graph_evidence": true,
+  "results": {
+   "keyword": {
+    "hit": true,
+    "recall": 0.5,
+    "first_rank": 3,
+    "top": [
+     "core/feconf.py",
+     "core/controllers/base.py",
+     "core/utils.py",
+     "core/domain/fs_services.py",
+     "core/domain/state_domain.py"
+    ]
+   },
+   "graph": {
+    "hit": true,
+    "recall": 0.5,
+    "first_rank": 2,
+    "top": [
+     "core/feconf.py",
+     "core/controllers/editor.py",
+     "core/controllers/reader.py",
+     "main.py",
+     "core/controllers/base.py"
+    ]
+   },
+   "graph + keyword": {
+    "hit": true,
+    "recall": 0.5,
+    "first_rank": 4,
+    "top": [
+     "core/feconf.py",
+     "core/controllers/base.py",
+     "main.py",
+     "core/controllers/editor.py",
+     "core/controllers/reader.py"
+    ]
+   },
+   "graph + keyword (gated)": {
+    "hit": true,
+    "recall": 0.5,
+    "first_rank": 4,
+    "top": [
+     "core/feconf.py",
+     "core/controllers/base.py",
+     "main.py",
+     "core/controllers/editor.py",
+     "core/controllers/reader.py"
+    ]
+   }
+  }
+ },
+ {
+  "issue": 21559,
+  "title": "[BUG]: There are some duplicate translation suggestions for a given language",
+  "fixed": [
+   "core/jobs/batch_jobs/cleanup_duplicate_translation_suggestions_jobs.py",
+   "core/jobs/batch_jobs/suggestion_migration_jobs.py",
+   "core/jobs/registry.py"
+  ],
+  "graph_evidence": false,
+  "results": {
+   "keyword": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": null,
+    "top": [
+     "core/feconf.py",
+     "core/domain/email_manager.py",
+     "main.py",
+     "core/domain/android_services.py",
+     "core/jobs/batch_jobs/contributor_admin_stats_jobs.py"
+    ]
+   },
+   "graph": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": null,
+    "top": []
+   },
+   "graph + keyword": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": null,
+    "top": [
+     "core/feconf.py",
+     "core/domain/email_manager.py",
+     "main.py",
+     "core/domain/android_services.py",
+     "core/jobs/batch_jobs/contributor_admin_stats_jobs.py"
+    ]
+   },
+   "graph + keyword (gated)": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": null,
+    "top": [
+     "core/feconf.py",
+     "core/domain/email_manager.py",
+     "main.py",
+     "core/domain/android_services.py",
+     "core/jobs/batch_jobs/contributor_admin_stats_jobs.py"
+    ]
+   }
+  }
+ },
+ {
+  "issue": 21722,
+  "title": "[Feature Request]: Need support to download questions from Android data handler",
+  "fixed": [
+   "core/controllers/android.py",
+   "core/domain/exp_fetchers.py",
+   "core/domain/question_fetchers.py",
+   "core/domain/skill_fetchers.py",
+   "core/domain/story_fetchers.py",
+   "core/domain/subtopic_page_services.py",
+   "core/domain/topic_fetchers.py",
+   "core/domain/translation_fetchers.py",
+   "core/storage/base_model/gae_models.py",
+   "core/storage/question/gae_models.py",
+   "core/storage/translation/gae_models.py"
+  ],
+  "graph_evidence": false,
+  "results": {
+   "keyword": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": 11,
+    "top": [
+     "core/feconf.py",
+     "core/domain/android_services.py",
+     "main.py",
+     "core/domain/state_domain.py",
+     "core/platform/auth/firebase_auth_services.py"
+    ]
+   },
+   "graph": {
+    "hit": true,
+    "recall": 0.09090909090909091,
+    "first_rank": 1,
+    "top": [
+     "core/controllers/android.py",
+     "core/domain/exp_domain.py",
+     "core/domain/exp_services.py",
+     "core/domain/state_domain.py"
+    ]
+   },
+   "graph + keyword": {
+    "hit": true,
+    "recall": 0.09090909090909091,
+    "first_rank": 2,
+    "top": [
+     "core/domain/state_domain.py",
+     "core/controllers/android.py",
+     "core/domain/exp_services.py",
+     "core/feconf.py",
+     "core/domain/exp_domain.py"
+    ]
+   },
+   "graph + keyword (gated)": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": 11,
+    "top": [
+     "core/feconf.py",
+     "core/domain/android_services.py",
+     "main.py",
+     "core/domain/state_domain.py",
+     "core/platform/auth/firebase_auth_services.py"
+    ]
+   }
+  }
+ },
+ {
+  "issue": 21882,
+  "title": "Validation failed: is_valid_algebraic_expression",
+  "fixed": [
+   "core/controllers/reader.py",
+   "core/schema_utils.py"
+  ],
+  "graph_evidence": true,
+  "results": {
+   "keyword": {
+    "hit": true,
+    "recall": 1.0,
+    "first_rank": 1,
+    "top": [
+     "core/controllers/reader.py",
+     "core/schema_utils.py",
+     "core/controllers/acl_decorators.py",
+     "core/feconf.py",
+     "core/controllers/base.py"
+    ]
+   },
+   "graph": {
+    "hit": true,
+    "recall": 1.0,
+    "first_rank": 1,
+    "top": [
+     "core/schema_utils.py",
+     "core/controllers/acl_decorators.py",
+     "core/controllers/reader.py",
+     "core/domain/object_registry.py",
+     "core/android_validation_constants.py"
+    ]
+   },
+   "graph + keyword": {
+    "hit": true,
+    "recall": 1.0,
+    "first_rank": 1,
+    "top": [
+     "core/schema_utils.py",
+     "core/controllers/acl_decorators.py",
+     "core/controllers/reader.py",
+     "core/domain/object_registry.py",
+     "core/controllers/base.py"
+    ]
+   },
+   "graph + keyword (gated)": {
+    "hit": true,
+    "recall": 1.0,
+    "first_rank": 1,
+    "top": [
+     "core/schema_utils.py",
+     "core/controllers/acl_decorators.py",
+     "core/controllers/reader.py",
+     "core/domain/object_registry.py",
+     "core/controllers/base.py"
+    ]
+   }
+  }
+ },
+ {
+  "issue": 21969,
+  "title": "Implement a BaseValidationJob for all base model subclasses",
+  "fixed": [
+   "core/jobs/batch_jobs/audit_topic_related_models_relation_jobs.py",
+   "core/jobs/batch_jobs/datastore_audit/__init__.py",
+   "core/jobs/batch_jobs/datastore_audit/base_validation_jobs.py",
+   "core/jobs/batch_jobs/model_validation_jobs.py",
+   "core/jobs/decorators/validation_decorators.py",
+   "core/jobs/types/base_validation_errors.py",
+   "core/jobs/types/blog_validation_errors.py",
+   "core/jobs/types/feedback_validation_errors.py",
+   "core/jobs/types/improvements_validation_errors.py",
+   "core/jobs/types/topic_validation_errors.py",
+   "core/jobs/types/user_validation_errors.py"
+  ],
+  "graph_evidence": true,
+  "results": {
+   "keyword": {
+    "hit": false,
+    "recall": 0.0,
+    "first_rank": 10,
+    "top": [
+     "core/jobs/types/job_run_result.py",
+     "core/domain/auth_domain.py",
+     "core/jobs/types/model_property.py",
+     "core/domain/app_feedback_report_domain.py",
+     "core/jobs/base_jobs.py"
+    ]
+   },
+   "graph": {
+    "hit": true,
+    "recall": 0.18181818181818182,
+    "first_rank": 1,
+    "top": [
+     "core/jobs/batch_jobs/datastore_audit/base_validation_jobs.py",
+     "core/jobs/types/base_validation_errors.py",
+     "core/jobs/types/job_run_result.py",
+     "core/storage/base_model/gae_models.py",
+     "core/platform/datastore/cloud_datastore_services.py"
+    ]
+   },
+   "graph + keyword": {
+    "hit": true,
+    "recall": 0.09090909090909091,
+    "first_rank": 2,
+    "top": [
+     "core/jobs/types/job_run_result.py",
+     "core/jobs/batch_jobs/datastore_audit/base_validation_jobs.py",
+     "core/jobs/base_jobs.py",
+     "core/jobs/types/model_property.py",
+     "core/domain/auth_domain.py"
+    ]
+   },
+   "graph + keyword (gated)": {
+    "hit": true,
+    "recall": 0.09090909090909091,
+    "first_rank": 2,
+    "top": [
+     "core/jobs/types/job_run_result.py",
+     "core/jobs/batch_jobs/datastore_audit/base_validation_jobs.py",
+     "core/jobs/base_jobs.py",
+     "core/jobs/types/model_property.py",
+     "core/domain/auth_domain.py"
+    ]
+   }
+  }
+ }
+]

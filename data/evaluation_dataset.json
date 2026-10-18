@@ -1,0 +1,827 @@
+{
+ "description": "RepoGraph AI evaluation issues. fixed_files are the non-test backend files changed by the fix commits. Issue comments are not included.",
+ "issues": [
+  {
+   "issue": 25008,
+   "split": "held_out",
+   "group": "A1: stack trace names the fixed file",
+   "url": "https://github.com/oppia/oppia/issues/25008",
+   "title": "core.utils.ValidationError Invalid character _ in the collection title: Mosin_es_testing URL requested",
+   "body": "<!--\n  - Before filing a new issue, please do a quick search to check that it hasn't\n  - already been filed on the [issue tracker](https://github.com/oppia/oppia/issues)._\n  -->\n\nThis error occurred recently in test server:\n\n```\n core.utils.ValidationError: Invalid character _ in the collection title: Mosin_es_testing URL requested: https://www.oppiatestserver.org/collection_editor_handler/data/0E1alYUpdbqY Request method: PUT Handler class name: EditableCollectionDataHandler Traceback (most recent call last): File \"/layers/google.python.pip/pip/lib/python3.10/site-packages/webapp2.py\", line 604, in dispatch return method(*args, **kwargs) File \"/workspace/core/controllers/acl_decorators.py\", line 567, in test_can_edit return handler(self, collection_id, **kwargs) File \"/workspace/core/controllers/collection_editor.py\", line 135, in put collection_services.update_collection( File \"/workspace/core/domain/collection_services.py\", line 1282, in update_collection _save_collection(committer_id, collection, commit_message, change_list) File \"/workspace/core/domain/collection_services.py\", line 982, in _save_collection collection.validate(strict=False) File \"/workspace/core/domain/collection_domain.py\", line 1314, in validate utils.require_valid_name( File \"/workspace/core/utils.py\", line 836, in require_valid_name raise ValidationError( core.utils.ValidationError: Invalid character _ in the collection title: Mosin_es_testing\nat .require_valid_name ( /workspace/core/utils.py:836 )\nat .validate ( /workspace/core/domain/collection_domain.py:1314 )\nat ._save_collection ( /workspace/core/domain/collection_services.py:982 )\nat .update_collection ( /workspace/core/domain/collection_services.py:1282 )\nat .put ( /workspace/core/controllers/collection_editor.py:135 )\nat .test_can_edit ( /workspace/core/controllers/acl_decorators.py:567 )\nat .dispatch ( /layers/google.python.pip/pip/lib/python3.10/site-packages/webapp2.py:604 ) \n```\n\n**Where did the error occur?** Add the page the error occurred on.\n\n**Which release did the error occur in?** `auto-ad8f48e `\n\n**Frequency of occurrence** Once\n\n**General instructions for contributors**\nIn general, the procedure for fixing server errors should be the following:\n\n- Analyze the code in the file where the error occurred and come up with a hypothesis for the reason.\n- Based on your hypothesis, determine a list of steps that reliably reproduce the issue (or confirm any repro instructions that have been provided). For example, if your hypothesis is that the issue arises due to a delay in a response from the backend server, try to change the code so that the backend server always has a delay, and see if the error then shows up 100% of the time on your local machine.\n- Explain your proposed fix, the logic behind it, and any other findings/context you have on this thread. You can also link to a [debugging doc](https://docs.google.com/document/d/1qRbvKjJ0A7NPVK8g6XJNISMx_6BuepoCL7F2eIfrGqM/edit) if you prefer.\n- Get your approach validated by an Oppia team member.\n- Make a PR that fixes the issue.\n",
+   "created": "2026-02-21",
+   "fix_commit": "57e40cb288af74bf1d1b60ef8a770e3b3a1c6d9a",
+   "fix_date": "2026-09-16",
+   "keyword_search_revision": "57e40cb288af74bf1d1b60ef8a770e3b3a1c6d9a^",
+   "fixed_files": [
+    "core/domain/collection_domain.py",
+    "core/utils.py"
+   ]
+  },
+  {
+   "issue": 23033,
+   "split": "held_out",
+   "group": "A1: stack trace names the fixed file",
+   "url": "https://github.com/oppia/oppia/issues/23033",
+   "title": "Exception Email to translation.reviewer@gmail.com failed to send",
+   "body": "<!--\n  - Before filing a new issue, please do a quick search to check that it hasn't\n  - already been filed on the [issue tracker](https://github.com/oppia/oppia/issues)._\n  -->\n\nThis error occurred recently in test server:\n\n```\nException: Exception raised\n\nStack Trace: \nTraceback (most recent call last):\n  File \"/layers/google.python.pip/pip/lib/python3.10/site-packages/webapp2.py\", line 604, in dispatch\n    return method(*args, **kwargs)\n  File \"/workspace/core/controllers/acl_decorators.py\", line 2563, in test_can_perform\n    return handler(self, **kwargs)\n  File \"/workspace/core/controllers/tasks.py\", line 158, in post\n    email_manager.send_instant_feedback_message_email(\n  File \"/workspace/core/domain/email_manager.py\", line 1290, in send_instant_feedback_message_email\n    _send_email(\n  File \"/workspace/core/domain/email_manager.py\", line 573, in _send_email\n    _send_email_transactional()\n  File \"/workspace/core/platform/transactions/cloud_transaction_services.py\", line 53, in wrapper\n    return fn(*args, **kwargs)\n  File \"/workspace/core/domain/email_manager.py\", line 564, in _send_email_transactional\n    email_services.send_mail(\n  File \"/workspace/core/domain/email_services.py\", line 144, in send_mail\n    raise Exception((\nException: Email to translation.reviewer@gmail.com failed to send. Please try again later or contact us to report a bug at https://www.oppia.org/contact.\n\nURL requested: http://oppiatestserver.appspot.com/task/email/instantfeedbackmessageemailhandler\nRequest method: POST\nHandler class name: InstantFeedbackMessageEmailHandler\nTraceback (most recent call last):\n  File \"/layers/google.python.pip/pip/lib/python3.10/site-packages/webapp2.py\", line 604, in dispatch\n    return method(*args, **kwargs)\n  File \"/workspace/core/controllers/acl_decorators.py\", line 2563, in test_can_perform\n    return handler(self, **kwargs)\n  File \"/workspace/core/controllers/tasks.py\", line 158, in post\n    email_manager.send_instant_feedback_message_email(\n  File \"/workspace/core/domain/email_manager.py\", line 1290, in send_instant_feedback_message_email\n    _send_email(\n  File \"/workspace/core/domain/email_manager.py\", line 573, in _send_email\n    _send_email_transactional()\n  File \"/workspace/core/platform/transactions/cloud_transaction_services.py\", line 53, in wrapper\n    return fn(*args, **kwargs)\n  File \"/workspace/core/domain/email_manager.py\", line 564, in _send_email_transactional\n    email_services.send_mail(\n  File \"/workspace/core/domain/email_services.py\", line 144, in send_mail\n    raise Exception((\nException: Email to translation.reviewer@gmail.com failed to send. Please try again later or contact us to report a bug at https://www.oppia.org/contact.\n```\n\n**Where did the error occur?** Add the page the error occurred on.\n\n**Which release did the error occur in?** 3-4-7\n\n**Frequency of occurrence** 375 times in the past 4 days.\n\n**General instructions for contributors**\nIn general, the procedure for fixing server errors should be the following:\n\n- Analyze the code in the file where the error occurred and come up with a hypothesis for the reason.\n- Based on your hypothesis, determine a list of steps that reliably reproduce the issue (or confirm any repro instructions that have been provided). For example, if your hypothesis is that the issue arises due to a delay in a response from the backend server, try to change the code so that the backend server always has a delay, and see if the error then shows up 100% of the time on your local machine.\n- Explain your proposed fix, the logic behind it, and any other findings/context you have on this thread. You can also link to a [debugging doc](https://docs.google.com/document/d/1qRbvKjJ0A7NPVK8g6XJNISMx_6BuepoCL7F2eIfrGqM/edit) if you prefer.\n- Get your approach validated by an Oppia team member.\n- Make a PR that fixes the issue.\n",
+   "created": "2025-07-30",
+   "fix_commit": "971af1969283184af0d085000af0835860821071",
+   "fix_date": "2026-08-30",
+   "keyword_search_revision": "971af1969283184af0d085000af0835860821071^",
+   "fixed_files": [
+    "core/domain/email_manager.py"
+   ]
+  },
+  {
+   "issue": 22277,
+   "split": "held_out",
+   "group": "A1: stack trace names the fixed file",
+   "url": "https://github.com/oppia/oppia/issues/22277",
+   "title": "ValueError: invalid literal for int() with base 10",
+   "body": "<!--\n  - Before filing a new issue, please do a quick search to check that it hasn't\n  - already been filed on the [issue tracker](https://github.com/oppia/oppia/issues)._\n  -->\n\nThis error occurred recently in test server:\n\n```\nException raised at https://oppiatestserver.appspot.com/blogdatahandler/data?offset=UPDATEXML(null,CHAR(58,73,56,111,78,58,106,52,108,50,71),null)%20/*'%20OR%20UPDATEXML(null,CHAR(58,73,56,111,78,58,76,49,76,53,73),null)%20OR%20'%22%20OR%20UPDATEXML(null,CHAR(58,73,56,111,78,58,79,51,65,48,85),null)%20OR%20%22*/: invalid literal for int() with base 10: 'UPDATEXML(null,CHAR(58,73,56,111,78,58,106,52,108,50,71),null) /*\\' OR UPDATEXML(null,CHAR(58,73,56,111,78,58,76,49,76,53,73),null) OR \\'\" OR UPDATEXML(null,CHAR(58,73,56,111,78,58,79,51,65,48,85),nu\nTraceback (most recent call last):\n  File \"/layers/google.python.pip/pip/lib/python3.9/site-packages/webapp2.py\", line 604, in dispatch\n    return method(*args, **kwargs)\n  File \"/workspace/core/controllers/acl_decorators.py\", line 115, in test_can_access\n    return handler(self, *args, **kwargs)\n  File \"/workspace/core/controllers/blog_homepage.py\", line 192, in get\n    offset = int(self.normalized_request['offset'])\nValueError: invalid literal for int() with base 10: 'UPDATEXML(null,CHAR(58,73,56,111,78,58,106,52,108,50,71),null) /*\\' OR UPDATEXML(null,CHAR(58,73,56,111,78,58,76,49,76,53,73),null) OR \\'\" OR UPDATEXML(null,CHAR(58,73,56,111,78,58,79,51,65,48,85),nu\n```\n\n**Where did the error occur?** blog page\n\n**Which release did the error occur in?** release-3-4-4\n\n**Frequency of occurrence** 3 times, last seen 26 Feb 2025\n\n**General instructions for contributors**\nIn general, the procedure for fixing server errors should be the following:\n\n- Analyze the code in the file where the error occurred and come up with a hypothesis for the reason.\n- Based on your hypothesis, determine a list of steps that reliably reproduce the issue (or confirm any repro instructions that have been provided). For example, if your hypothesis is that the issue arises due to a delay in a response from the backend server, try to change the code so that the backend server always has a delay, and see if the error then shows up 100% of the time on your local machine.\n- Explain your proposed fix, the logic behind it, and any other findings/context you have on this thread. You can also link to a [debugging doc](https://docs.google.com/document/d/1qRbvKjJ0A7NPVK8g6XJNISMx_6BuepoCL7F2eIfrGqM/edit) if you prefer.\n- Get your approach validated by an Oppia team member.\n- Make a PR that fixes the issue.\n",
+   "created": "2025-03-26",
+   "fix_commit": "4c085eab824bfcbb51c98ef4462235ccd0d8ba07",
+   "fix_date": "2026-06-07",
+   "keyword_search_revision": "4c085eab824bfcbb51c98ef4462235ccd0d8ba07^",
+   "fixed_files": [
+    "core/controllers/blog_homepage.py"
+   ]
+  },
+  {
+   "issue": 21878,
+   "split": "held_out",
+   "group": "A1: stack trace names the fixed file",
+   "url": "https://github.com/oppia/oppia/issues/21878",
+   "title": "Expected translation count for language_code ar to be less than or equal to content_count(225), received 226",
+   "body": "<!--\n  - Before filing a new issue, please do a quick search to check that it hasn't\n  - already been filed on the [issue tracker](https://github.com/oppia/oppia/issues)._\n  -->\n\nThis error occurred recently in production:\n\n```\ncore.utils.ValidationError: Expected translation count for language_code ar to be less than or equal to content_count(225), received 226\n\nat ._validate_translation_counts ( /workspace/core/domain/opportunity_domain.py:265 )\nat .validate ( /workspace/core/domain/opportunity_domain.py:221 )\nat .update_translation_opportunity_with_accepted_suggestion ( /workspace/core/domain/opportunity_services.py:401 )\nat .accept ( /workspace/core/domain/suggestion_registry.py:771 )\nat .accept_suggestion ( /workspace/core/domain/suggestion_services.py:768 )\nat .put ( /workspace/core/controllers/suggestion.py:460 )\nat .test_can_accept_suggestion ( /workspace/core/controllers/acl_decorators.py:4393 )\nat .dispatch ( /layers/google.python.pip/pip/lib/python3.9/site-packages/webapp2.py:604 )\n```\n\n**Where did the error occur?** Add the page the error occurred on.\nContributor dashboard page.\n\n**Which release did the error occur in?** Add the Oppia release version associated with the error.\n3-4-3-hotfix-2\n\n**Frequency of occurrence** Add details about how many times the error occurred within a given time period (e.g. the last week, the last 30 days, etc.). This helps issue triagers establish severity.\n28 occurences in 30 days.\n\n**Additional context** Add any other context that would be useful. Make sure to anonymize user data like user IDs, exploration IDs, state names, user names, etc. Replace any personal data with appropriate placeholders.\n\n**Reproduction steps** If possible, add reproduction steps, otherwise delete this section.\n\n**General instructions for contributors**\nIn general, the procedure for fixing server errors should be the following:\n\n- Analyze the code in the file where the error occurred and come up with a hypothesis for the reason.\n- Based on your hypothesis, determine a list of steps that reliably reproduce the issue (or confirm any repro instructions that have been provided). For example, if your hypothesis is that the issue arises due to a delay in a response from the backend server, try to change the code so that the backend server always has a delay, and see if the error then shows up 100% of the time on your local machine.\n- Explain your proposed fix, the logic behind it, and any other findings/context you have on this thread. You can also link to a [debugging doc](https://docs.google.com/document/d/1qRbvKjJ0A7NPVK8g6XJNISMx_6BuepoCL7F2eIfrGqM/edit) if you prefer.\n- Get your approach validated by an Oppia team member.\n- Make a PR that fixes the issue.\n",
+   "created": "2025-02-08",
+   "fix_commit": "661fd354d33ce7bb66b20d12e0b6437c781d55c0",
+   "fix_date": "2026-03-09",
+   "keyword_search_revision": "661fd354d33ce7bb66b20d12e0b6437c781d55c0^",
+   "fixed_files": [
+    "core/domain/opportunity_services.py",
+    "core/domain/suggestion_services.py"
+   ]
+  },
+  {
+   "issue": 21883,
+   "split": "held_out",
+   "group": "A2: stack trace names a different file",
+   "url": "https://github.com/oppia/oppia/issues/21883",
+   "title": "InvalidInputException in the pretest_handler",
+   "body": "<!--\n  - Before filing a new issue, please do a quick search to check that it hasn't\n  - already been filed on the [issue tracker](https://github.com/oppia/oppia/issues)._\n  -->\n\nThis error occurred recently in production:\n\n```\nException raised at https://www.oppia.org/pretest_handler/0FBWxCE5egOw?story_url_fragment=piece-of-cake: \nTraceback (most recent call last):\n  File \"/layers/google.python.pip/pip/lib/python3.9/site-packages/webapp2.py\", line 604, in dispatch\n    return method(*args, **kwargs)\n  File \"/workspace/core/controllers/acl_decorators.py\", line 258, in test_can_play\n    return handler(self, exploration_id, **kwargs)\n  File \"/workspace/core/controllers/reader.py\", line 576, in get\n    raise self.InvalidInputException\ncore.controllers.base.UserFacingExceptions.InvalidInputException\n```\n\n**Where did the error occur?** Add the page the error occurred on.\n/pretest_handler/0FBWxCE5egOw?story_url_fragment=piece-of-cake\n\n**Which release did the error occur in?** Add the Oppia release version associated with the error.\n3-4-3-hotfix-3\n\n**Frequency of occurrence** Add details about how many times the error occurred within a given time period (e.g. the last week, the last 30 days, etc.). This helps issue triagers establish severity.\n2 occurrences in 30 days.\n\n**Additional context** Add any other context that would be useful. Make sure to anonymize user data like user IDs, exploration IDs, state names, user names, etc. Replace any personal data with appropriate placeholders.\n\n**Reproduction steps** If possible, add reproduction steps, otherwise delete this section.\n\n**General instructions for contributors**\nIn general, the procedure for fixing server errors should be the following:\n\n- Analyze the code in the file where the error occurred and come up with a hypothesis for the reason.\n- Based on your hypothesis, determine a list of steps that reliably reproduce the issue (or confirm any repro instructions that have been provided). For example, if your hypothesis is that the issue arises due to a delay in a response from the backend server, try to change the code so that the backend server always has a delay, and see if the error then shows up 100% of the time on your local machine.\n- Explain your proposed fix, the logic behind it, and any other findings/context you have on this thread. You can also link to a [debugging doc](https://docs.google.com/document/d/1qRbvKjJ0A7NPVK8g6XJNISMx_6BuepoCL7F2eIfrGqM/edit) if you prefer.\n- Get your approach validated by an Oppia team member.\n- Make a PR that fixes the issue.\n",
+   "created": "2025-02-09",
+   "fix_commit": "8bf72dc0b59efe742a8be6fce1f07a28b7c9f0a5",
+   "fix_date": "2026-08-05",
+   "keyword_search_revision": "8bf72dc0b59efe742a8be6fce1f07a28b7c9f0a5^",
+   "fixed_files": [
+    "core/controllers/base.py"
+   ]
+  },
+  {
+   "issue": 20148,
+   "split": "held_out",
+   "group": "A2: stack trace names a different file",
+   "url": "https://github.com/oppia/oppia/issues/20148",
+   "title": "core.controllers.base.UserFacingExceptions.NotFoundException",
+   "body": "<!--\r\n  - Before filing a new issue, please do a quick search to check that it hasn't\r\n  - already been filed on the [issue tracker](https://github.com/oppia/oppia/issues)._\r\n  -->\r\n\r\nThis error occurred recently in test server:\r\n\r\nThe error has occurred with 2 different stack traces, mentioned below\r\n\r\n```\r\nException raised at https://www.oppiatestserver.org/explorehandler/init/test_id: \r\nTraceback (most recent call last):\r\n  File \"/layers/google.python.pip/pip/lib/python3.8/site-packages/webapp2.py\", line 604, in dispatch\r\n    return method(*args, **kwargs)\r\n  File \"/workspace/core/controllers/acl_decorators.py\", line 252, in test_can_play\r\n    raise self.NotFoundException\r\ncore.controllers.base.UserFacingExceptions.NotFoundException\r\n```\r\n\r\n```\r\nException raised at https://www.oppiatestserver.org/version_history_handler/metadata/id_1/id_2: \r\nTraceback (most recent call last):\r\n  File \"/layers/google.python.pip/pip/lib/python3.8/site-packages/webapp2.py\", line 604, in dispatch\r\n    return method(*args, **kwargs)\r\n  File \"/workspace/core/controllers/acl_decorators.py\", line 256, in test_can_play\r\n    return handler(self, exploration_id, **kwargs)\r\n  File \"/workspace/core/controllers/reader.py\", line 2706, in get\r\n    raise self.NotFoundException\r\ncore.controllers.base.UserFacingExceptions.NotFoundException\r\n```\r\n\r\n**Where did the error occur?** Occurred on `https://www.oppiatestserver.org/explorehandler/init/test_id` and `https://www.oppiatestserver.org/version_history_handler/metadata/id_1/id_2`.\r\n\r\n**Which release did the error occur in?** release-3.3.8\r\n\r\n**Frequency of occurrence** The first stack trace has occurred 27 times since yesterday(9 April) and the second one has occurred 6 times since yesterday(9 April).\r\n\r\n**General instructions for contributors**\r\nIn general, the procedure for fixing server errors should be the following:\r\n\r\n- Analyze the code in the file where the error occurred and come up with a hypothesis for the reason.\r\n- Based on your hypothesis, determine a list of steps that reliably reproduce the issue (or confirm any repro instructions that have been provided). For example, if your hypothesis is that the issue arises due to a delay in a response from the backend server, try to change the code so that the backend server always has a delay, and see if the error then shows up 100% of the time on your local machine.\r\n- Explain your proposed fix, the logic behind it, and any other findings/context you have on this thread. You can also link to a [debugging doc](https://docs.google.com/document/d/1qRbvKjJ0A7NPVK8g6XJNISMx_6BuepoCL7F2eIfrGqM/edit) if you prefer.\r\n- Get your approach validated by an Oppia team member.\r\n- Make a PR that fixes the issue.\r\n",
+   "created": "2024-04-10",
+   "fix_commit": "ef008d9327bedbc85803dcdf0b894e95822395c7",
+   "fix_date": "2026-07-08",
+   "keyword_search_revision": "ef008d9327bedbc85803dcdf0b894e95822395c7^",
+   "fixed_files": [
+    "core/controllers/base.py"
+   ]
+  },
+  {
+   "issue": 18371,
+   "split": "held_out",
+   "group": "A2: stack trace names a different file",
+   "url": "https://github.com/oppia/oppia/issues/18371",
+   "title": "Schema validation for 'answer' failed: Type of <decimal number> is not present in options ",
+   "body": "<!--\r\n  - Before filing a new issue, please do a quick search to check that it hasn't\r\n  - already been filed on the [issue tracker](https://github.com/oppia/oppia/issues)._\r\n  -->\r\n\r\nThis error occurred recently in production\r\n\r\n```\r\nTraceback (most recent call last):\r\n  File \"/workspace/core/controllers/base.py\", line 364, in dispatch\r\n    self.validate_and_normalize_args()\r\n  File \"/workspace/core/controllers/base.py\", line 532, in validate_and_normalize_args\r\n    raise self.InvalidInputException('\\n'.join(errors))\r\ncore.controllers.base.UserFacingExceptions.InvalidInputException: Schema validation for 'answer' failed: Type of <decimal number> is not present in options \r\n```\r\n\r\nOccurred 45+ times on the server.\r\n",
+   "created": "2023-06-12",
+   "fix_commit": "b2f7cb1052b5c30c568d26bfab1cd8c30466506d",
+   "fix_date": "2026-05-23",
+   "keyword_search_revision": "b2f7cb1052b5c30c568d26bfab1cd8c30466506d^",
+   "fixed_files": [
+    "core/controllers/reader.py"
+   ]
+  },
+  {
+   "issue": 23330,
+   "split": "held_out",
+   "group": "B: no file named",
+   "url": "https://github.com/oppia/oppia/issues/23330",
+   "title": "[BUG]: Unable to add users to custom group in release coordinator page.",
+   "body": "### Describe the bug\n\nRelease Coordinator have rights to create user groups and release a feature to a specific group. Currently, we aren't able to add users to these groups.\n\n### URL of the page where the issue is observed.\n\n/release-coordinator\n\n### Steps To Reproduce\n\nAs a Release Coordinator:\n1. Navigate to release coordinator \n2. Navigate to MISC tab\n3. Create a user group.\n4. try to add an existing user in user group.\n\n### Expected Behavior\n\nThe user should be added to user group.\n\n### Screenshots/Videos\n\nhttps://github.com/user-attachments/assets/67784ec1-7d37-40ae-99f5-feac164b9c87\n\n### What device are you using?\n\nDesktop\n\n### Operating System\n\nLinux\n\n### What browsers are you seeing the problem on?\n\n_No response_\n\n### Browser version\n\n_No response_\n\n### Additional context\n\n_No response_\n\n### Tips for developers\n\nBefore addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).\n\nThen, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).\n\n**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!\n",
+   "created": "2025-09-10",
+   "fix_commit": "fdf2be500fdb8cb546c27661d3e5c3ed00a60d85",
+   "fix_date": "2026-08-16",
+   "keyword_search_revision": "fdf2be500fdb8cb546c27661d3e5c3ed00a60d85^",
+   "fixed_files": [
+    "core/domain/user_services.py"
+   ]
+  },
+  {
+   "issue": 25307,
+   "split": "held_out",
+   "group": "B: no file named",
+   "url": "https://github.com/oppia/oppia/issues/25307",
+   "title": "[Feature Request]: Improve retry mechanism for email sending based on error type",
+   "body": "### Is your feature request related to a problem? Please describe.\n\n- [x]  4xx errors\n- [ ]  5xx errors\n\nCurrently, the retry mechanism for sending emails does not differentiate between different types of errors. In some cases, retries may occur even when the failure is caused by a client-side issue, where retrying would not resolve the problem.\n\nA better approach would be to classify errors and decide whether a retry should occur based on the error type.\n\nFor example:\n\nClient errors (4xx) such as 400, 403, etc., usually indicate an issue with the request (invalid parameters, permission issues, etc.). Retrying in these cases is unlikely to succeed, so retries should stop immediately.\n\nServer errors (5xx) such as 500, 501, etc., typically indicate temporary service failures. In such cases, retry attempts could help if the service recovers.\n\n### Describe the solution (or solutions) you'd like\n\nUpdate the retry email mechanism to check the error code before retrying:\n\nDo not retry for 4xx errors.\n\nAllow retries for 5xx errors with a configurable retry limit.\n\n### Describe alternatives you've considered and rejected\n\n_No response_\n\n### Additional context\n\n_No response_",
+   "created": "2026-03-13",
+   "fix_commit": "60a5a247d74b754c5882b8d14f4d8c47171c7672",
+   "fix_date": "2026-05-11",
+   "keyword_search_revision": "60a5a247d74b754c5882b8d14f4d8c47171c7672^",
+   "fixed_files": [
+    "core/controllers/tasks.py",
+    "core/domain/email_services.py",
+    "core/platform/email/mailgun_email_services.py"
+   ]
+  },
+  {
+   "issue": 24588,
+   "split": "held_out",
+   "group": "B: no file named",
+   "url": "https://github.com/oppia/oppia/issues/24588",
+   "title": "[BUG]: Generate dummy chapters fails with \"Entity for class StoryModel with id story_id not found\"",
+   "body": "### Describe the bug\n\nThe \"Generate dummy chapters\" tool in the Admin Panel (/admin#activities) fails to create chapters for a selected story.\n\n### URL of the page where the issue is observed.\n\nhttp://localhost:8181/admin\n\n### Steps To Reproduce\n\n1.Log in as an Admin and ensure you have the Curriculum Admin role.\n\n2.Navigate to the Admin Panel > Activities tab.\n\n3.Use \"Generate Stories\" to create at least one dummy story (e.g., dummy_title0).\n\n4.Reload the page\n\n5.Scroll down to Generate dummy chapters.\n\n6.Select the recently created story from the dropdown.\n\n7.Click Generate Chapters.\n\n8.Observe the error toast in the bottom right corner.\n\n### Expected Behavior\n\nThe tool should identify the internal ID of the selected story and generate the requested number of dummy chapters linked to that story.\n\n### Screenshots/Videos\n\n<img width=\"1920\" height=\"917\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5d94729d-78a8-498f-9011-2b2578aea5d1\" />\n\n### What device are you using?\n\nDesktop\n\n### Operating System\n\nLinux\n\n### What browsers are you seeing the problem on?\n\n_No response_\n\n### Browser version\n\n_No response_\n\n### Additional context\n\n_No response_\n\n### Tips for developers\n\nBefore addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).\n\nThen, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).\n\n**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!\n",
+   "created": "2026-01-24",
+   "fix_commit": "4227199860de934362248f036f2e2439592eca09",
+   "fix_date": "2026-03-16",
+   "keyword_search_revision": "4227199860de934362248f036f2e2439592eca09^",
+   "fixed_files": [
+    "core/controllers/admin.py"
+   ]
+  },
+  {
+   "issue": 24315,
+   "split": "held_out",
+   "group": "B: no file named",
+   "url": "https://github.com/oppia/oppia/issues/24315",
+   "title": "[BUG]: Admin \u201cGenerate dummy translation opportunities\u201d fails when Dummy Skill exists with non-`dummySkillId`",
+   "body": "### Describe the bug\n\nThe admin action `_generate_dummy_translation_opportunities()` determines whether dummy structures already exist by checking for a skill with description **\"Dummy Skill 1\"**, but later fetches the skill using a **hard-coded ID** (`dummySkillId`, `strict=True`).\n\nIf a skill with description \"Dummy Skill 1\" exists under a *different* ID (for example, created by another admin dummy generator), the existence check passes but the ID-based fetch fails, causing the admin action to crash.\n\n---\n\n## Root Cause Analysis\n\nThe generator conflates **skill description existence** with **specific skill ID existence**:\n\n- Initial generation check uses  \n  `does_skill_with_description_exist('Dummy Skill 1')`\n- Subsequent logic assumes the skill exists under the hard-coded ID  \n  `dummySkillId`\n\nThese assumptions can fall out of sync when:\n\n- Other admin dummy generators create a skill with the same description but a different ID\n- A previous run is interrupted after creating the skill but before completing the full structure setup\n\n---\n\n## Proposed Fix\n\nMake the initial generation check consistent with subsequent logic by either:\n\n- Checking for the existence of the specific hard-coded ID (`dummySkillId`) instead of relying on skill description, **or**\n- Dynamically retrieving and reusing the actual skill ID instead of assuming a fixed one\n\n---\n\n## Additional Context\n\n- Introduced in PR #20278 (dummy translation opportunities feature)\n- Similar admin dummy-generator fragility has been observed in issue #20818, though this is a distinct bug\n\n\n### URL of the page where the issue is observed.\n\nhttp://localhost:8181/admin\n\n### Steps To Reproduce\n\n1. Run the admin action **\"Load dummy new structures data\"** (this creates a skill with description \"Dummy Skill 1\" using a generated ID).\n2. Run the admin action **\"Generate dummy translation opportunities\"**.\n3. Observe an exception when attempting to fetch the skill with ID `dummySkillId`.\n\n### Expected Behavior\n\nThe dummy translation opportunity generator should be self-contained and should not crash based on the order in which other admin dummy generators are run.\n\n## Actual Behavior\n\nThe generator raises an exception because it assumes that the existence of a skill with description \"Dummy Skill 1\" implies the existence of a skill with ID `dummySkillId`.\n\n### Screenshots/Videos\n\n_No response_\n\n### What device are you using?\n\nDesktop\n\n### Operating System\n\nLinux\n\n### What browsers are you seeing the problem on?\n\nChrome\n\n### Browser version\n\n_No response_\n\n### Additional context\n\n_No response_\n\n### Tips for developers\n\nBefore addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).\n\nThen, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).\n\n**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!\n",
+   "created": "2025-12-27",
+   "fix_commit": "473ec598e9e83e4e29d24cf4211d691e812e27ff",
+   "fix_date": "2026-02-24",
+   "keyword_search_revision": "473ec598e9e83e4e29d24cf4211d691e812e27ff^",
+   "fixed_files": [
+    "core/controllers/admin.py"
+   ]
+  },
+  {
+   "issue": 22999,
+   "split": "held_out",
+   "group": "B: no file named",
+   "url": "https://github.com/oppia/oppia/issues/22999",
+   "title": "[BUG]: \"Feedback\" replies in \"Exploration Editor\" do not update until page refresh",
+   "body": "### Describe the bug\n\nReplying to feedback in the \"Feedback\" section of the \"Exploration Editor\" does not automatically update the UI to show the creators reply. \n\n### URL of the page where the issue is observed.\n\nhttps://www.oppiatestserver.org/create/CbtnJlvOsshC#/feedback\n\n### Steps To Reproduce\n\n1. Go to https://www.oppiatestserver.org/\n2. Hover your mouse over the profile icon in the \"Navigation Header\"\n3. Select \"Creator Dashboard\" from the drop-down menu.\n4. Select the first \"Exploration\" with an \"Open Thread\"\n5. Navigate to the \"Feedback\" section from the \"Exploration Editor's Navigation Header\" \n6. Select the first thread with \"Open\" status\n7. Type \"Test Response 1\" in the available text box\n8. Click on the \"Send\" Button\n\n### Expected Behavior\n\nI expect the \"Feedback\" page to refresh, showing the new message sent to the thread, and the text box should be cleared when the \"Send\" button is clicked.\n\n### Screenshots/Videos\n\nhttps://github.com/user-attachments/assets/f7c57124-3471-4014-b267-0540474b04b5\n\n### What device are you using?\n\nDesktop\n\n### Operating System\n\nWindows\n\n### What browsers are you seeing the problem on?\n\nChrome, Firefox, Edge\n\n### Browser version\n\n\"138.0.7204.158 (Chrome)\", \"140.0.4 (Firefox)\", \"138.0.3351.95 (Edge)\"\n\n### Additional context\n\nThe same issue occurs when a new thread is created, and the creator sends a new message.\n\n### Tips for developers\n\nBefore addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).\n\nThen, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).\n\n**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!\n",
+   "created": "2025-07-25",
+   "fix_commit": "3262def1a8690a95689cb2bfa21a2b4cffca7f3e",
+   "fix_date": "2026-01-21",
+   "keyword_search_revision": "3262def1a8690a95689cb2bfa21a2b4cffca7f3e^",
+   "fixed_files": [
+    "core/domain/feedback_services.py"
+   ]
+  },
+  {
+   "issue": 24470,
+   "split": "held_out",
+   "group": "B: no file named",
+   "url": "https://github.com/oppia/oppia/issues/24470",
+   "title": "[BUG]: Draft chapters are currently included in the total chapter count .",
+   "body": "### Describe the bug\n\nOn the learner dashboard, in the Goals tab, each goal currently shows \u201cX of Y completed,\u201d where Y represents the total number of chapters. This count currently includes draft chapters, which should not be displayed to the learner.\n\n### URL of the page where the issue is observed.\n\nhttp://localhost:8181/learner-dashboard\n\n### Steps To Reproduce\n\n1.Have serial_chapter_launch_curriculum_admin_view , serial_chapter_launch_learner_view and show_redesigned_learner_dashboard flag turned on \n2.Have few draft chapters and published chapters on serial chapter\n3. Navigate to : http://localhost:8181/learner-dashboard and Open Goal tab \n\n### Expected Behavior\n\nDraft chapters are currently included in the total chapter count, which should not be the case\n\n### Screenshots/Videos\n\n<img width=\"1920\" height=\"1077\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b7620028-883c-4990-99d1-a769ea4fc175\" />\n\n### What device are you using?\n\nDesktop\n\n### Operating System\n\nOther\n\n### What browsers are you seeing the problem on?\n\n_No response_\n\n### Browser version\n\n_No response_\n\n### Additional context\n\n_No response_\n\n### Tips for developers\n\nBefore addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).\n\nThen, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).\n\n**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!\n",
+   "created": "2026-01-11",
+   "fix_commit": "3c0a1a01cd7161b9916d3b6aaebbace2a869cfcb",
+   "fix_date": "2026-01-21",
+   "keyword_search_revision": "3c0a1a01cd7161b9916d3b6aaebbace2a869cfcb^",
+   "fixed_files": [
+    "core/domain/topic_fetchers.py"
+   ]
+  },
+  {
+   "issue": 24156,
+   "split": "held_out",
+   "group": "B: no file named",
+   "url": "https://github.com/oppia/oppia/issues/24156",
+   "title": "[BUG]: Draft Lessons should not be shown on the Learner Dashboard",
+   "body": "### Describe the bug\n\nCurrently, There are 3 stages for a chapter in Serial Chapter Feature flag : \"published\", \"Ready to publish\", \"Draft\".Now only Ready to publish or Published chapters should be shown on the learner's dashboard \"Continue where you left section\". But Draft are also shown in that.\n\n### URL of the page where the issue is observed.\n\nhttp://localhost:8181/learner-dashboard\n\n### Steps To Reproduce\n\n1.Have serial feature flag turned on\n2.Have few draft chapters and published chapters on serial chapter\n3.Complete the published chapter\n4.Then you will see Draft chapter which can't be accesed but are shown in Lesson-in -progress\n\n### Expected Behavior\n\nNo Draft chapters should be shown in Learner Dashboard\n\n### Screenshots/Videos\n\nhttps://github.com/user-attachments/assets/a06f6e55-4130-4d75-b441-a4bd779e5e96\n\n### What device are you using?\n\nDesktop\n\n### Operating System\n\nLinux\n\n### What browsers are you seeing the problem on?\n\n_No response_\n\n### Browser version\n\n_No response_\n\n### Additional context\n\n_No response_\n\n### Tips for developers\n\nBefore addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).\n\nThen, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).\n\n**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!\n",
+   "created": "2025-12-14",
+   "fix_commit": "77f5df388882fbb97f145c15fd2e87f75d66dcdc",
+   "fix_date": "2026-01-14",
+   "keyword_search_revision": "77f5df388882fbb97f145c15fd2e87f75d66dcdc^",
+   "fixed_files": [
+    "core/controllers/story_viewer.py",
+    "core/domain/story_fetchers.py"
+   ]
+  },
+  {
+   "issue": 23440,
+   "split": "held_out",
+   "group": "B: no file named",
+   "url": "https://github.com/oppia/oppia/issues/23440",
+   "title": "[Feature Request]: Add Science topics to the dropdown menu for reviewers",
+   "body": "### Is your feature request related to a problem? Please describe.\n\nRight now, the filter by topic dropdown menu only includes the topics for math, and not any of the new science topics. \n\n<img width=\"245\" height=\"385\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e16d014f-e980-4f60-9b22-0978b890dfd6\" />\n\n### Describe the solution (or solutions) you'd like\n\nI would like the new science topics to be included in the dropdown menu under a science section, like how the current topics are under the math section.\n\n### Describe alternatives you've considered and rejected\n\n_No response_\n\n### Additional context\n\n_No response_",
+   "created": "2025-09-23",
+   "fix_commit": "43f6598e2d6af9339642533ec1e8cd2419facf05",
+   "fix_date": "2025-11-10",
+   "keyword_search_revision": "43f6598e2d6af9339642533ec1e8cd2419facf05^",
+   "fixed_files": [
+    "core/controllers/contributor_dashboard.py"
+   ]
+  },
+  {
+   "issue": 22479,
+   "split": "held_out",
+   "group": "B: no file named",
+   "url": "https://github.com/oppia/oppia/issues/22479",
+   "title": "[BUG]: Generating chapter is not visible in topic viewer page.",
+   "body": "### Describe the bug\n\nThe chapters that are added to a topic are visible on the Topics and Skills Dashboard, but they are not appearing on the Topic Viewer Page.\n\n### URL of the page where the issue is observed.\n\nhttp://localhost:8181/learn/math/fraction/story\n\n### Steps To Reproduce\n\n1. Go to the admin page and generate a chapter under the fraction(or any).\n2. After visit learn/math/fraction/story\n\n### Expected Behavior\n\nThe generated chapter should be shown in the topic viewer page\n\n### Screenshots/Videos\n\n![Image](https://github.com/user-attachments/assets/e8c80b62-2294-4e38-8996-24cf032fd95a)\n\n![Image](https://github.com/user-attachments/assets/4b3a768e-f3f8-4095-b9a1-b66a96d006f1)\n\n### What device are you using?\n\nDesktop\n\n### Operating System\n\nLinux\n\n### What browsers are you seeing the problem on?\n\n_No response_\n\n### Browser version\n\n_No response_\n\n### Additional context\n\nPR link which introduced it - https://github.com/oppia/oppia/pull/21787\n\n### Tips for developers\n\nBefore addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).\n\nThen, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).\n\n**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!\n",
+   "created": "2025-04-17",
+   "fix_commit": "af0cd84410d8f43ca6cf60b7d08f70b45908666d",
+   "fix_date": "2025-10-28",
+   "keyword_search_revision": "af0cd84410d8f43ca6cf60b7d08f70b45908666d^",
+   "fixed_files": [
+    "core/controllers/admin.py"
+   ]
+  },
+  {
+   "issue": 23492,
+   "split": "held_out",
+   "group": "B: no file named",
+   "url": "https://github.com/oppia/oppia/issues/23492",
+   "title": "[BUG]: Goal becomes completed even after having uncompleted Lessons",
+   "body": "### Describe the bug\n\nGoal contains more than two Lessons and the lessons themselves contain few chapters , on completing one lesson under that goal, it marks it as completed and puts all lessons in the completed lessons category.\n\n### URL of the page where the issue is observed.\n\nhttps://oppiaserver-backup-migration.appspot.com/learner-dashboard\n\n### Steps To Reproduce\n\n1. populate the classroom topics chapters...\n2. now go to the learner dashboard\n3. select the goal which contain more than 1 lessons\n4. start one lesson ,complete all chapters\n5. After completing last chapter , go to the progress tab\n6. in progress tab notice all the Lessons are under the completed lessons.\n\n### Expected Behavior\n\nonly completed lessons should be under the completed lessons section.\n\n### Screenshots/Videos\n\nhttps://github.com/user-attachments/assets/710c19ed-b077-499e-89ed-783a0e551444\n\n### What device are you using?\n\nDesktop\n\n### Operating System\n\nWindows\n\n### What browsers are you seeing the problem on?\n\n_No response_\n\n### Browser version\n\n_No response_\n\n### Additional context\n\n_No response_\n\n### Tips for developers\n\nBefore addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).\n\nThen, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).\n\n**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!\n",
+   "created": "2025-09-29",
+   "fix_commit": "0873e14b71cc8a79b13d16c7c23b946aeabb3373",
+   "fix_date": "2025-10-10",
+   "keyword_search_revision": "0873e14b71cc8a79b13d16c7c23b946aeabb3373^",
+   "fixed_files": [
+    "core/domain/learner_progress_services.py",
+    "core/domain/topic_fetchers.py"
+   ]
+  },
+  {
+   "issue": 22109,
+   "split": "held_out",
+   "group": "B: no file named",
+   "url": "https://github.com/oppia/oppia/issues/22109",
+   "title": "[BUG]: [Object object] error occurs when editing topic name as a topic manager",
+   "body": "### Describe the bug\n\n[Object object] error occurs when editing topic name as a topic manager\n\n\n### URL of the page where the issue is observed.\n\nhttps://www.oppiatestserver.org/topic_editor/GJ2rLXRKD5hw#/\n\n### Steps To Reproduce\n\n1. Log in as a topic manager (make sure you **are not** a curriculum admin)\n2. Navigate to the topic editor\n3. Change name\n4. Click outside the input field\n\n\n### Expected Behavior\n\nTopic manager either can edit the name or can see a clear error message\n\n### Screenshots/Videos\n\nhttps://github.com/user-attachments/assets/992c7dda-e3df-4a50-a114-57c1fdf79ed1\n\n<img width=\"1018\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4f9a4d24-9d33-4123-bcdf-8c0f6f432325\" />\n\n### What device are you using?\n\nDesktop\n\n### Operating System\n\nMacOS\n\n### What browsers are you seeing the problem on?\n\nGoogle Chrome\n\n### Browser version\n\nVersion 133.0.6943.143\n\n### Additional context\n\n_No response_\n\n### Tips for developers\n\nBefore addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).\n\nThen, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).\n\n**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!\n",
+   "created": "2025-03-12",
+   "fix_commit": "c33f60a9b2d9d4278f62b9696c4d6f94b08c95a2",
+   "fix_date": "2025-05-24",
+   "keyword_search_revision": "c33f60a9b2d9d4278f62b9696c4d6f94b08c95a2^",
+   "fixed_files": [
+    "core/controllers/topic_editor.py",
+    "core/controllers/topic_viewer.py",
+    "main.py"
+   ]
+  },
+  {
+   "issue": 21841,
+   "split": "held_out",
+   "group": "B: no file named",
+   "url": "https://github.com/oppia/oppia/issues/21841",
+   "title": "Improve Stackdriver backend error logs",
+   "body": "Stackdriver reports backend errors that occur on the server. However, they may not contain details about the user action that resulted in the error e.g. the page where it occurred or the backend endpoint that was hit. Currently, when a backend error occurs, server admins need to look at previous log entries to piece together the user actions that led to the error so there is sufficient info to debug / fix the error -- this is time-consuming and not ideal. \n\nTo fix this, when a backend error is raised and reported in logs, it would be good to also include relevant information about the URL and backend endpoint that triggered the error, so that it gets reported on Stackdriver together with the error log.",
+   "created": "2025-02-03",
+   "fix_commit": "8de9fa2e02ca1da00598d745f06a4207cf6ad293",
+   "fix_date": "2025-04-21",
+   "keyword_search_revision": "8de9fa2e02ca1da00598d745f06a4207cf6ad293^",
+   "fixed_files": [
+    "core/controllers/base.py"
+   ]
+  },
+  {
+   "issue": 22726,
+   "split": "held_out",
+   "group": "C: file named without a trace",
+   "url": "https://github.com/oppia/oppia/issues/22726",
+   "title": "[BUG]: Unexpected mismatch between clean and original html while sending email for testing",
+   "body": "### Describe the bug\n\nFlagging a dummy exploration should trigger an email on backup server in the server logs if the platform param `server_can_send_emails` is set to true. I used this setup for testing of https://github.com/oppia/oppia/pull/20809. See details [here](https://docs.google.com/document/d/1azUBaemJ3lvIccIdFj71w9xaKqk_o4HSVek56ZDtgpE/edit?disco=AAABiHPSy4U).\n\nHowever, the email never gets logged due to an unexpected mismatch between cleaned and original html body being checked [here](https://github.com/oppia/oppia/blob/develop/core/domain/email_manager.py#L540). \n\n### URL of the page where the issue is observed.\n\nN/A\n\n### Steps To Reproduce\n\nUse the instructions [here](https://docs.google.com/document/d/1azUBaemJ3lvIccIdFj71w9xaKqk_o4HSVek56ZDtgpE/edit?tab=t.0#bookmark=id.h3db61mefuid).\n\n### Expected Behavior\n\nThe cleaned and original html should not mismatch and the email should be logged.\n\n### Screenshots/Videos\n\n_No response_\n\n### What device are you using?\n\nDesktop\n\n### Operating System\n\nOther\n\n### What browsers are you seeing the problem on?\n\n_No response_\n\n### Browser version\n\n_No response_\n\n### Additional context\n\n_No response_\n\n### Tips for developers\n\nBefore addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).\n\nThen, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).\n\n**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!\n",
+   "created": "2025-05-27",
+   "fix_commit": "80e1985c4d92bacb30a98a9a53b68efd9f203d20",
+   "fix_date": "2026-07-28",
+   "keyword_search_revision": "80e1985c4d92bacb30a98a9a53b68efd9f203d20^",
+   "fixed_files": [
+    "core/domain/email_manager.py",
+    "core/domain/platform_parameter_registry.py",
+    "core/feconf.py"
+   ]
+  },
+  {
+   "issue": 25518,
+   "split": "held_out",
+   "group": "C: file named without a trace",
+   "url": "https://github.com/oppia/oppia/issues/25518",
+   "title": "[Feature Request]: On Web switch android controller to use the new StudyGuideModels.",
+   "body": "### Is your feature request related to a problem? Please describe.\n\nOn Web, switch the android controller to use the new StudyGuideModels using [this handler](https://github.com/oppia/oppia/blob/9cb9864a5364119f06d7674ac79df25c3bd740fb/core/controllers/android.py#L311). (It will still serve data in the form of the old SubtopicPages.)\n\n### Describe the solution (or solutions) you'd like\n\nUpdate AndroidActivityHandler in android.py by replacing ACTIVITY_TYPE_SUBTOPIC with ACTIVITY_TYPE_SUBTOPIC_WITH_STUDY_GUIDE_MIGRATION. (https://github.com/oppia/oppia/blob/9cb9864a5364119f06d7674ac79df25c3bd740fb/core/controllers/android.py#L246)\n\nThis will switch the controller to use the new Study Guide models while still returning data in the existing SubtopicPage format.\n\nAfter the change, ensure everything works correctly and no existing functionality breaks.\n\n### Describe alternatives you've considered and rejected\n\n_No response_\n\n### Additional context\n\n_No response_",
+   "created": "2026-03-24",
+   "fix_commit": "bfebb8225d6e8b03174a6c71a5d595c87e6fc18a",
+   "fix_date": "2026-07-21",
+   "keyword_search_revision": "bfebb8225d6e8b03174a6c71a5d595c87e6fc18a^",
+   "fixed_files": [
+    "core/controllers/android.py"
+   ]
+  },
+  {
+   "issue": 8704,
+   "split": "large",
+   "group": null,
+   "url": "https://github.com/oppia/oppia/issues/8704",
+   "title": "Add acceptance tests for question editor modal which was recently added in the PR #8538",
+   "body": "Add e2e tests for question editor modal which was recently added in the PR #8538 .\r\nAn existing test could also be modified to check the new question editor flow.",
+   "created": "2020-02-23",
+   "fix_commit": "0cf54cd1405c64846b1f9961b2cf03be031205d1",
+   "fix_date": "2026-06-25",
+   "keyword_search_revision": "0cf54cd1405c64846b1f9961b2cf03be031205d1^",
+   "fixed_files": [
+    "core/controllers/question_editor.py"
+   ]
+  },
+  {
+   "issue": 11736,
+   "split": "large",
+   "group": null,
+   "url": "https://github.com/oppia/oppia/issues/11736",
+   "title": "Fix issue in `GeneralFeedbackThreadModelAuditOneOffJob`",
+   "body": "Some `GeneralFeedbackThreadModel` that have `has_suggestion` set to `True` and have no related `GeneralSuggestionModel`.",
+   "created": "2021-01-19",
+   "fix_commit": "2cadd4208ad2adcf101a24bfce851d5680fb4e55",
+   "fix_date": "2026-02-25",
+   "keyword_search_revision": "2cadd4208ad2adcf101a24bfce851d5680fb4e55^",
+   "fixed_files": [
+    "core/jobs/batch_jobs/audit_threads_with_missing_suggestions_jobs.py",
+    "core/jobs/registry.py"
+   ]
+  },
+  {
+   "issue": 12735,
+   "split": "large",
+   "group": null,
+   "url": "https://github.com/oppia/oppia/issues/12735",
+   "title": "[Contributor Experience] Add separate email preferences option for contributor dashboard related emails ",
+   "body": "Currently, to receive the reviewer/admin contributor dashboard email notifications, the user must have the \"Receive news and updates about the site\" email option checked in their /preferences page. This is a bit confusing as the \"Receive news and updates about the site\" option is intended for marketing emails. \r\n\r\nMost likely what we want here is a new separate preferences option for just contributor dashboard email notifications, but we would like to enumerate all possible product options to reach a decision.\r\n\r\n- [Email notifications design](https://docs.google.com/document/d/1tuXPSHvUN6I32Rle7E2CQs5HONgtP3TMuA__bWEsoDY/edit#heading=h.3v6abk545vio)\r\n- [Testing instructions](https://docs.google.com/document/d/1GoWSu1Gux6MvrifjM2ODbtbK0Ouvb-s7ikfLVyP0NxQ/edit) \r\n\r\n\r\n\r\n\r\n",
+   "created": "2021-05-05",
+   "fix_commit": "c99ddafba9ba83eda7c7d1afbc5155b592a7163c",
+   "fix_date": "2026-08-04",
+   "keyword_search_revision": "c99ddafba9ba83eda7c7d1afbc5155b592a7163c^",
+   "fixed_files": [
+    "core/controllers/profile.py",
+    "core/domain/user_domain.py",
+    "core/domain/user_services.py",
+    "core/domain/wipeout_service.py",
+    "core/feconf.py",
+    "core/storage/user/gae_models.py"
+   ]
+  },
+  {
+   "issue": 14971,
+   "split": "large",
+   "group": null,
+   "url": "https://github.com/oppia/oppia/issues/14971",
+   "title": "`GeneralFeedbackMessageModel.thread_id` sometimes references nonexistent `GeneralFeedbackThreadModel`",
+   "body": "The `GeneralFeedbackMessageModel.thread_id` sometimes references nonexistent `GeneralFeedbackThreadModel`. This needs to be fixed and also prevented in the future.\n\nThe legacy prod validation logs:\n\n```\n[u'failed validation check for feedback_thread_ids field check of GeneralFeedbackMessageModel', [u\"Entity id exploration.a_mITf3NNevS.WzE0ODkzMTg5MjE2OTQuOThdWzExODU1XQ==.0: based on field feedback_thread_ids having value exploration.a_mITf3NNevS.WzE0ODkzMTg5MjE2OTQuOThdWzExODU1XQ==, expected model GeneralFeedbackThreadModel with id exploration.a_mITf3NNevS.WzE0ODkzMTg5MjE2OTQuOThdWzExODU1XQ== but it doesn't exist\n```\n\nWe probably need to fix `delete_threads_for_multiple_entities` to be idempotent.\n\n\nThis issue has two sub-parts\n\n- [ ] Find the root cause and eliminate it to stop the problem from happening\n- [ ] Migrate existing models to a valid state",
+   "created": "2022-02-18",
+   "fix_commit": "3436dd334db05a229c60e6aa9eb601b78c39fbc2",
+   "fix_date": "2026-03-07",
+   "keyword_search_revision": "3436dd334db05a229c60e6aa9eb601b78c39fbc2^",
+   "fixed_files": [
+    "core/domain/feedback_services.py",
+    "core/jobs/batch_jobs/audit_non_existent_threads_messages_jobs.py",
+    "core/jobs/registry.py"
+   ]
+  },
+  {
+   "issue": 18305,
+   "split": "large",
+   "group": null,
+   "url": "https://github.com/oppia/oppia/issues/18305",
+   "title": "Restructure the revision cards",
+   "body": "**Platform**\nOppia Web and Oppia Android \n\n**Describe the request**\nFor revision cards that have more than one skill taught in them, users find the cards too long. This was reported:\n\"The revision card is too long. It was hard for the learner to stay focused on reading it till the end.\"\n\nHowever, because we can only have 4-8 revision cards per topic, it is impossible to create revision cards based on the skills. Else, there will be too many revision cards.\n\n**Proposed solution:**\nSince revision cards have headings that split them into sections, re-design the revision cards to have headings and contents that are collapsible, as exemplified in the images below.\n![Screenshot 2023-05-29 at 20-51-31 Personalized Online Learning from Oppia](https://github.com/oppia/design-team/assets/111491620/6489be7f-9aa9-4cd3-9f9c-fff74345dac4)\n\n![Screenshot 2023-05-29 at 20-51-43 Personalized Online Learning from Oppia](https://github.com/oppia/design-team/assets/111491620/122bc9f2-b6f3-4112-bb3e-0d005b7161df)\n\nThis way, learners won't be overwhelmed with how much information they have to read, at first.\n\n### Milestone 1:\n\n| No. | Description of PR / action | PR Link | Prerequisite steps | PR Creation | PR Merge |\n|-----|---------------------------|---------|-------------------|------------|-----------|\n| 1 | Rename all instances of Revision Card to Study Guide (#21725) | #22738 | - | <li>- [x] 29 May</li> | <li>- [x] 31 May</li> |\n| 2 | Add 'show_restructured_study_guides' feature flag for allowing the creators to access the updated study guide editor page and learners to access the updated study guide user interface (the actual content displayed by the study guides will be the same, just the user interface will be different). | #22745 | - | <li>- [x] 31 May </li> | <li>- [x] 31 May </li> |\n| 3 | Create the StudyGuideModel and create the new domain object classes for it<br>- Rename the page_contents property to sections in the new model.<br>- Create new domain object classes to use the sections property<br>- Implement content_id assignment logic | #22751 | - | <li>- [x] 3 June </li> | <li>- [x] 6 June </li> |\n| 4 | Make changes to subtopic services and other files to use both the new and old structures.<br>- If a SubtopicPageModel is created, a StudyGuideModel will also be created<br>- Any changes made to a SubtopicPageModel will also be made to a StudyGuideModel<br>- Create a new study guide services file which will be used for the new ui and structure once the migration is complete and the new ui is created<br>- Add methods for creation and updation of study guides and populating the values for the study guide viewer and editor pages. | #22782 | 3 | <li>- [x] 7 June</li> | <li>- [x] 9 June</li> |\n| 5 | Create methods for the android controller that concatenate all the sections of a study guide into a single blob and return them [NOTE: Done as part of M1.3] | #22751| 3, 4 | <li>- [x] 8 June</li> | <li>- [x] 9 June</li> |\n| 6 | Write beam job to populate the StudyGuideModel | #22787 | 3, 4 | <li>- [x] 9 June</li> | <li>- [x] 16 June</li> |\n| 7 | **(Needs feature flag)** Make frontend changes related to the Study Guide Editor Page (along with acceptance tests)<br>- Create the 'create new study guide' modal to accept heading and content<br>- Implement the new section mat card<br>- Add validation to check that a study guide always has at least 1 section<br>- Implement character counting validation in the rte of the content field<br>- Write acceptance tests for the curriculum admin | #22798 | 2, 3, 4, 6 | <li>- [x] 12 June</li> | <li>- [x] 15 June</li> |\n| 8 | **(Needs feature flag)** Make frontend changes related to Study Guide Viewer Page (along with acceptance tests)<br>- Update the existing study guide to reflect the new structure<br>- Update the preview tab of the study guide editor page to show the same study guide that the learner sees<br>- Write acceptance tests for the user | #22848 | 2, 3, 4, 6, 7 | <li>- [x] 16 June</li> | <li>- [x] 19 June</li> |\n| 9 |Add the option to get the old subtopic structure and new study guide structure from the android controller.| #22870| 3, 4, 6, 7, 8 | <li>- [x] 18 June</li> | <li>- [x] 19 June</li> |\n| 10 | Convert the subtopic page migration jobs file to study guide migration jobs.<br>- In the video proof, show a trivial migration like changing the titles of all study guides to \"Hello!\" |#22885 | 3, 4, 6, 7, 8 | <li>- [x] 18 June</li> | <li>- [x] 19 June</li> |\n| 11 | Move the 'show_restructured_study_guides' feature flag to the test stage for testing. | Done as part of M1.7 #22798 | 2, 3, 4, 6, 7, 8, 9 | <li>- [x] 20 June</li> | <li>- [x] 20 June</li> |\n| 17 | Bug fixes if required. Only #22968 has been reported. | #22970 | 2, 4, 5, 6, 7, 8, 9, 10 | <li>- [x] 5 July</li> | <li>- [x] 13 July</li> |\n| 18 | Move the 'show_restructured_study_guides' feature flag to the prod stage (after successful testing and approval from ProdOps Team)<br>- Switch all domain layer calls to the study guides | | 2, 4, 5, 6, 7, 8, 9, 10, 17 | <li>- [ ] 13 July</li> | <li>- [ ] 14 July</li> |\n| 19 | Break down the study guides on Oppia.org into sections and verify they are displaying correctly as currently they will have only one section with all the content:<br>- Test this on the backup server first with a few study guides<br>- Do this on prod after Sean grants the curriculum admin role |  | 2, 4, 5, 6, 7, 8, 9, 10, 17 | <li>- [ ] 14 July</li> | <li>- [ ] 14 July</li> |\n\n### Milestone 2:\n\n| No. | Description of PR / action | PR Link | Prerequisite steps | PR Created | PR Merged |\n|-----|---------------------------|---------|-------------------|------------|-----------|\n| 5 | Deprecate the 'show_restructured_study_guides' feature flag by removing all references to it (as the feature should be working as expected for 2 weeks by this point)<br>- Change all file and component names with subtopic to study_guide.<br>- Remove use of the subtopic page services file and deprecate it.<br>- Deprecate the subtopic page model | | M1.2, M1.3, M1.4, M1.5, M1.6, M1.7, M1.8, M1.9, M1.17, M1.18, M1.19 | <li>- [ ] 30 July</li> | <li>- [ ] 31 July</li> |\n| 10 | Add 'enable_study_guide_translations' feature flag for allowing study guide translation opportunities to be generated. | #23091 | - | <li>- [x] 9 August</li> | <li>- [ ] 9 August</li> |\n| 11 | Use the GeneralTranslationOpportunityModel created by Hasitha for Study Guide Translation opportunities |#23135| M1.3, M1.4, M1.5, 10 | <li>- [x] 11 August</li> | <li>- [ ] 13 August</li> |\n| 13 | **(Needs feature flag)** Create temporary form on the admin page to test study guide translations. Gate this form to never appear on prod (it can show up on test/backup servers). | | M1.3, M1.4, M1.5, 10, 11 | <li>- [ ] 15 August</li> | <li>- [ ] 16 August</li> |\n| 14 | Modify TranslationOpportunityGenerationJob/ write new StudyGuideTranslationOpportunityGenerationJob along with the regenerate button on the admin page | | M1.3, M1.4, M1.5, 10, 11, 13 | <li>- [ ] 18 August</li> | <li>- [ ] 25 August</li> |\n| 15 | Move the 'enable_study_guide_translations' feature flag to the test stage for testing. | | M1.3, M1.4, M1.5, 10, 11, 13, 14 | <li>- [ ] 26 August</li> | <li>- [ ] 27 August</li> |\n| 17 | Move the 'enable_study_guide_translations' feature flag to the prod stage (after successful testing and approval from ProdOps Team) | | M1.3, M1.4, M1.5, 10, 11, 13, 14, 15 | <li>- [ ] 30 August</li> | <li>- [ ] 30 August</li> |\n| 19 | Deprecate the 'enable_study_guide_translations' feature flag by removing all references to it (as the feature should be working as expected for 2 weeks by this point) | | M1.2, M1.4, M1.6, 8, 9, 10, 11, 15, 17 | <li>- [ ] 14 September</li> | <li>- [ ] 15 September</li> |\n\nMeeting minutes: [link](https://docs.google.com/document/d/1mPWb8kjAix_5AwvX_HVRVMzDQ7Dgw22fTMNLAthBiqE/edit?usp=sharing)\n\nJournal: [link](https://medium.com/@mohitruwatia2312)\n\n",
+   "created": "2023-05-29",
+   "fix_commit": "adbc9f6e7d17a7246108834a9bece5320d0448c1",
+   "fix_date": "2025-12-04",
+   "keyword_search_revision": "adbc9f6e7d17a7246108834a9bece5320d0448c1^",
+   "fixed_files": [
+    "core/controllers/admin.py",
+    "core/domain/study_guide_services.py",
+    "core/domain/topic_services.py",
+    "core/feconf.py",
+    "core/jobs/batch_jobs/populate_study_guide_models_jobs.py",
+    "core/jobs/registry.py",
+    "main.py"
+   ]
+  },
+  {
+   "issue": 18519,
+   "split": "large",
+   "group": null,
+   "url": "https://github.com/oppia/oppia/issues/18519",
+   "title": "[Feature Request]: Enable practice question admins/coordinators to edit questions directly.",
+   "body": "### Is your feature request related to a problem? Please describe.\r\n\r\nPractice question admins/coordinators should be able to edit questions directly through the skill editor. This would make it possible to fix any issues in accepted questions if any are reported, as well as audit the list of existing questions prior to publication of the set.\r\n\r\n### Describe the solution you'd like\r\n\r\nIn addition to their current permissions, give practice questions admins/coordinators access to edit practice questions directly through the skill editor page.\r\n\r\n### Describe alternatives you've considered\r\n\r\nCurrently this functionality is limited to the curriculum admin, but this is too much of a bottleneck.\r\n\r\n### Additional context\r\n\r\n_No response_",
+   "created": "2023-06-26",
+   "fix_commit": "e8f6cafbe225b399aced326bd6e96712db224fdb",
+   "fix_date": "2026-04-29",
+   "keyword_search_revision": "e8f6cafbe225b399aced326bd6e96712db224fdb^",
+   "fixed_files": [
+    "core/controllers/acl_decorators.py",
+    "core/controllers/topic_editor.py",
+    "core/controllers/topics_and_skills_dashboard.py",
+    "core/domain/role_services.py",
+    "core/domain/topic_domain.py",
+    "core/domain/topic_services.py"
+   ]
+  },
+  {
+   "issue": 18523,
+   "split": "large",
+   "group": null,
+   "url": "https://github.com/oppia/oppia/issues/18523",
+   "title": "[Feature Request]: Add validation checks that should be applied to stories prior to publication",
+   "body": "### Is your feature request related to a problem? Please describe.\n\nIn the story/chapter editors, it is possible to publish a story even though some of the story/chapter information is missing.\n\n### Describe the solution you'd like\n\nStory publication should be conditioned on the following validation checks (that should be applied in both the frontend and backend):\n\n- [X] Every chapter includes at least one acquired skill.\n- [X] Every chapter description is non-empty.\n- [X] Every chapter outline is non-empty.\n\nIf any of these checks fail, the story should not be publishable.\n",
+   "created": "2023-06-26",
+   "fix_commit": "d7d14c70ce3bb1b53bef18512af52405e910c721",
+   "fix_date": "2025-11-12",
+   "keyword_search_revision": "d7d14c70ce3bb1b53bef18512af52405e910c721^",
+   "fixed_files": [
+    "core/controllers/admin.py"
+   ]
+  },
+  {
+   "issue": 18535,
+   "split": "large",
+   "group": null,
+   "url": "https://github.com/oppia/oppia/issues/18535",
+   "title": "[Feature Request]: Drop flags for checkpoint_celebration and end_chapter_celebration",
+   "body": "### Is your feature request related to a problem? Please describe.\r\n\r\nCertain features have been completed and we aren't going to turn them off, so we should get rid of their feature flags per the last step in the [guidance for launching a feature](https://github.com/oppia/oppia/wiki/Launching-new-features). \r\n\r\n### Describe the solution you'd like\r\n\r\nRemove the flags for the following features, and update the code to assume that they are permanently turned on:\r\n\r\n- checkpoint_celebration\r\n- end_chapter_celebration\r\n\r\n### Describe alternatives you've considered\r\n\r\n_No response_\r\n\r\n### Additional context\r\n\r\n_No response_",
+   "created": "2023-06-27",
+   "fix_commit": "9d85f7b54c82d22c9a3df265479fbbbf23921029",
+   "fix_date": "2025-03-21",
+   "keyword_search_revision": "9d85f7b54c82d22c9a3df265479fbbbf23921029^",
+   "fixed_files": [
+    "core/feature_flag_list.py"
+   ]
+  },
+  {
+   "issue": 19075,
+   "split": "large",
+   "group": null,
+   "url": "https://github.com/oppia/oppia/issues/19075",
+   "title": "[BUG]: Skill opportunity progress bar doesn't show percentage of questions awaiting review",
+   "body": "### Describe the bug\n\nWhen I view skill opportunities listed under the \"Submit Questions\" tab on the contributor dashboard page, I expect the progress bar to work like the progress bar for exploration opportunities. That means the progress bar should display a saturated green bar for cards that have been accepted, a desaturated green bar for cards that are awaiting review, and a white bar for cards that are available to work on. Instead, the progress bar for skill opportunities displays only a saturated green bar for the number of questions that the corresponding skill has and the remainder of the bar displaying white.\n\n### URL of the page where the issue is observed.\n\n/contributor-dashboard\n\n### Steps To Reproduce\n\nEnsure skills are assigned to a published topic and the user has \"submit question\" contribution rights before following these steps:\r\n\r\n1. Go to the contributor dashboard.\r\n2. Click on the Submit Question tab.\r\n3. Observe the progress bar of a skill opportunity. Remember the percentage shown.\r\n4. Successfully submit a question suggestion for said skill opportunity.\r\n5. Notice that the progress bar for that skill opportunity has stayed the same.\n\n### Expected Behavior\n\nWhen I submit a question suggestion, I expect the progress bar should display an increase of a desaturated green bar. It should represent the number of the skill opportunity's cards that are awaiting review. The desaturated green bar increasing should occur in order to reflect the skill opportunity's up-to-date progress after submitting the suggestion.\r\n\r\nFor any skill opportunities, if there are question suggestions awaiting review, then the opportunity's progress bar should show a desaturated green bar whose length represents the percentage of questions in that state.\n\n### Screenshots/Videos\n\nSkill opportunities' progress bar not updating to show newly submitted question suggestion awaiting review:\r\n\r\nhttps://github.com/oppia/oppia/assets/117241994/14430bdc-2bf7-48de-9639-f5bacf5512f4\r\n\r\nExploration opportunities' progress bar (and what we expect the skill opportunities' progress bar to look like):\r\n\r\n![](https://user-images.githubusercontent.com/10575562/278822991-5bf5b64a-7040-4c11-a8ca-2bb691631ef0.png)\n\n### What device are you using?\n\nDesktop\n\n### Operating System\n\nWindows\n\n### What browsers are you seeing the problem on?\n\nChrome\n\n### Browser version\n\n118.0.5993.118\n\n### Additional context\n\nThis bug was found when I asked @seanlip for clarification on an acceptance test expectation for practice question submitters and he responded with this https://github.com/oppia/oppia/issues/17712#issuecomment-1783851895.\n\n### Tips for developers\n\nBefore tackling the bug, please use `git bisect` (see https://git-scm.com/docs/git-bisect) to investigate which PR caused it (you only need to go back as far as commit https://github.com/oppia/oppia/commits/9a334e9). If you find the PR, leave a comment on this issue pointing to it, or just say that it happened before commit 9a334e9 if you could reproduce it there. This will help us fix the issue by reverting the faulty PR.\r\n\r\nAlso, if this is your first issue, please make sure to follow https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue and https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up before claiming it. Thanks!\r\n",
+   "created": "2023-10-29",
+   "fix_commit": "8306d6f7f9d2aa1ff7682e1c9f8524b78e509680",
+   "fix_date": "2026-10-10",
+   "keyword_search_revision": "8306d6f7f9d2aa1ff7682e1c9f8524b78e509680^",
+   "fixed_files": [
+    "core/controllers/contributor_dashboard.py",
+    "core/domain/suggestion_services.py",
+    "core/storage/suggestion/gae_models.py"
+   ]
+  },
+  {
+   "issue": 19154,
+   "split": "large",
+   "group": null,
+   "url": "https://github.com/oppia/oppia/issues/19154",
+   "title": "[BUG, blocked on angular migration being completed]: Remove core/templates/pages/error-pages/error-page.module.ts once angular migration is complete",
+   "body": "### Describe the bug\r\n\r\nAfter #18855, we have two error modules. One to handle error page routing from the backend for all non angular router pages and one that handles error page routing from the angular router. Once the angular migration is complete (tracked in #18654), we need to make the following changes:\r\n  * Merge the `core/templates/pages/error-pages/error-page-shared.module.ts` module into `core/templates/pages/error-pages/error-page.module.ts`\r\n  * Remove:\r\n    * `core/templates/pages/error-pages/old-error-page.module.ts`: Old error page module\r\n    * `core/templates/pages/error-pages/old-error-page-routing.module.ts`: Routing module used in the old module\r\n    * `core/templates/pages/error-pages/error-page-shared.module.ts`: Shared module created to enable the presence of two error modules at the same time.\r\n\r\n### URL of the page where the issue is observed.\r\n\r\n_No response_\r\n\r\n### Steps To Reproduce\r\n\r\n_No response_\r\n\r\n### Expected Behavior\r\n\r\n_No response_\r\n\r\n### Screenshots/Videos\r\n\r\n_No response_\r\n\r\n### What device are you using?\r\n\r\n_No response_\r\n\r\n### Operating System\r\n\r\n_No response_\r\n\r\n### What browsers are you seeing the problem on?\r\n\r\n_No response_\r\n\r\n### Browser version\r\n\r\n_No response_\r\n\r\n### Additional context\r\n\r\n_No response_\r\n\r\n### Tips for developers\r\n\r\nBefore tackling the bug, please use `git bisect` (see https://git-scm.com/docs/git-bisect) to investigate which PR caused it (you only need to go back as far as commit https://github.com/oppia/oppia/commits/9a334e9). If you find the PR, leave a comment on this issue pointing to it, or just say that it happened before commit 9a334e9 if you could reproduce it there. This will help us fix the issue by reverting the faulty PR.\r\n\r\nAlso, if this is your first issue, please make sure to follow https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue and https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up before claiming it. Thanks!\r\n",
+   "created": "2023-11-14",
+   "fix_commit": "123f7b1d6be527b3259ff2ce7236a6f3d72dd6b7",
+   "fix_date": "2025-02-10",
+   "keyword_search_revision": "123f7b1d6be527b3259ff2ce7236a6f3d72dd6b7^",
+   "fixed_files": [
+    "core/controllers/base.py"
+   ]
+  },
+  {
+   "issue": 19173,
+   "split": "large",
+   "group": null,
+   "url": "https://github.com/oppia/oppia/issues/19173",
+   "title": "[Feature Request]: DropDown Pagination for Translation Reviewer Tab (Contributor Dashboard)",
+   "body": "### Is your feature request related to a problem? Please describe.\r\n\r\nCurrently, users have to navigate using \"Next\" and \"Pagination method\" which is tiresome in case of multiple page numbers.\r\n\r\n### Describe the solution (or solutions) you'd like\r\n\r\nWe would like to have a drop down pagination for users, which would make it easier for them to paginate through various pages.\r\n\r\nFor more details, please refer to https://docs.google.com/document/d/18rFozOzbcDYWa6sS9gTYu4R_VfMevbM5v3xlf7Gy3zQ/edit?pli=1#bookmark=id.lth5ao389yhg.\r\n\r\nMock: \r\n<img width=\"794\" alt=\"Screenshot 2023-11-17 at 19 48 36\" src=\"https://github.com/oppia/oppia/assets/98253080/18f06b17-37e5-4c0c-a28f-856144bd4315\">\r\n\r\n\r\n### Describe alternatives you've considered and rejected\r\n\r\n_No response_\r\n\r\n### Additional context\r\n\r\n_No response_",
+   "created": "2023-11-17",
+   "fix_commit": "56ad55805e7557fa97acea5dbd4af9fec4fe076d",
+   "fix_date": "2026-09-30",
+   "keyword_search_revision": "56ad55805e7557fa97acea5dbd4af9fec4fe076d^",
+   "fixed_files": [
+    "core/controllers/contributor_dashboard.py",
+    "core/domain/opportunity_services.py",
+    "core/feature_flag_list.py",
+    "core/feconf.py",
+    "core/storage/opportunity/gae_models.py",
+    "main.py"
+   ]
+  },
+  {
+   "issue": 19417,
+   "split": "large",
+   "group": null,
+   "url": "https://github.com/oppia/oppia/issues/19417",
+   "title": "[Feature Request]: Blog Page state should remain same on refresh",
+   "body": "### Is your feature request related to a problem? Please describe.\r\n\r\nWhile browsing through blogs, I reached the 4th page. Unfortunately, due to a connection error, the site refreshed and took me back to the first page of blogs. It's quite inconvenient to try to find the exact page you were on, and it doesn't provide a pleasant user experience having to search for that page or blog again.\r\n\r\n### Describe the solution (or solutions) you'd like\r\n\r\n~~We could consider saving the pagination index in the local storage. This way, upon reloading, we can retrieve the value from there and ensure a smoother browsing experience.~~\r\n\r\nEDIT (seanlip): Let's not do this. Instead, when changing pagination, update the URL, so that refreshing the URL brings the user back to the same page. (Include a page number in the URL.)\r\n\r\n### URL of the page where the issue is observed.\r\nhttps://www.oppia.org/blog\r\n\r\n### Describe alternatives you've considered and rejected\r\n\r\n_No response_\r\n\r\n### Additional context\r\n\r\n\r\nhttps://github.com/oppia/oppia/assets/135348086/214052a1-8d44-4c96-86ac-99398e9cb96e\r\n\r\n",
+   "created": "2024-01-07",
+   "fix_commit": "f9b476f26a95722327f0cc3eb41e08525db8586b",
+   "fix_date": "2026-03-31",
+   "keyword_search_revision": "f9b476f26a95722327f0cc3eb41e08525db8586b^",
+   "fixed_files": [
+    "core/controllers/blog_homepage.py",
+    "core/domain/blog_services.py"
+   ]
+  },
+  {
+   "issue": 19636,
+   "split": "large",
+   "group": null,
+   "url": "https://github.com/oppia/oppia/issues/19636",
+   "title": "Run audit jobs on the server for validations of UserSettings",
+   "body": "<!--\r\n  - Before filing a new issue, please do a quick search to check that it hasn't\r\n  - already been filed on the [issue tracker](https://github.com/oppia/oppia/issues)._\r\n  -->\r\n\r\nThis error occurred recently in oppia's test-server:\r\n\r\n```\r\nExpected user_bio to be a string.\r\n```\r\n\r\n**Where did the error occur?**\r\nPreference page.\r\n\r\n**Frequency of occurrence** \r\nFor every page load of 'Preferences Page'  , for users whose user bio is empty. \r\n\r\n**Additional context** \r\n Some user_bio fields on the server are null. This results in the entire server throwing a 500 for some users when [this PR](https://github.com/oppia/oppia/pull/19399) is deployed. \r\n\r\nThe aim of this issue is to add the validations in  UserSettings.validate() method and thier tests which were removed in [this PR19633](https://github.com/oppia/oppia/pull/19633)  (with any required modifications). \r\n\r\n\r\n**Steps need to be done:**\r\n\r\n1. Write and run an audit job on the server to identify and fix any issues related to null user_bio fields.\r\nRefer to the [Apache Beam Jobs wiki](https://github.com/oppia/oppia/wiki/Apache-Beam-Jobs) for guidance on running audit jobs.\r\n2. Decide on the approach to fix the mismatches identified by the audit job. Specifically, address the issue where 'user_bio' is expected to be a string but is null.\r\n3. Implement the necessary fixes, which may include running additional Beam jobs if required. Ensure that the fixes address the root cause of the null user_bio fields.\r\n4. Add back the validations in the UserSettings.validate() method as metntioned above , to enforce data integrity. Verify the correctness of the validations and ensure they cover edge cases.\r\n5. Verify the effectiveness of the fixes and validations by rerunning the audit job. Ensure that all null user_bio fields are appropriately handled.\r\n6. Set the 'required=True' attribute for the 'user_bio' field of the UserSettings Model. This ensures that the 'user_bio' field is mandatory and prevents null values.\r\n\r\n**Note**: https://github.com/oppia/oppia/issues/19694 also relates to problems with the user_bio field and it may be a good idea to tackle it together with this issue.",
+   "created": "2024-01-30",
+   "fix_commit": "9b280f2575758fffc88c4946b5348ddc32f2ab44",
+   "fix_date": "2025-03-14",
+   "keyword_search_revision": "9b280f2575758fffc88c4946b5348ddc32f2ab44^",
+   "fixed_files": [
+    "core/jobs/batch_jobs/user_bios_change_jobs.py",
+    "core/jobs/registry.py"
+   ]
+  },
+  {
+   "issue": 19851,
+   "split": "large",
+   "group": null,
+   "url": "https://github.com/oppia/oppia/issues/19851",
+   "title": "[Feature Request]: Create a new \"worked examples\" RTE component and deprecate the corresponding field in the skill editor.",
+   "body": "### Is your feature request related to a problem? Please describe.\n\nIn Oppia, both skill explanations and subtopic pages can include worked examples. However, worked examples are currently incorrectly implemented only as a field on the skill model. We would prefer to implement worked examples as a rich-text component instead, since this gives more flexibility in where they are placed and allows them to be used in other contexts like the subtopic pages.\n\nThe aim of this issue is to clean up the incorrect modelling described above and fix the representation of worked examples, while also ensuring that they are easily translatable. The new \"worked example\" RTE component should have 'question' and 'answer' customization args that are HTML fields; note that both of these fields should be able to contain both images and math expressions.\n\n### Describe the solution (or solutions) you'd like\n\nSteps to tackle this issue:\n- [x] Write and run an audit job (or a function from the Admin page) to verify that there are no skills on the server with a nonempty worked_examples field.\n- [x] Carry out a schema migration to safely deprecate the worked_examples field in the skill_contents part of the SkillModel, and remove it from the skill editor UI as well.\n- [x] Implement a new 'Worked Example' RTE component that appears only in the skill explanation and subtopic page RTEs, and add acceptance tests for its use.\n- [x] Verify that the learner and creator user flows involving this RTE component are working smoothly, and that the user experience aligns with [these mocks](https://www.figma.com/design/1e1pq5PSoiULZqM4zvVNY0/Oppia-%23136-Incorporate-worked-examples-in-the-learning-experience?node-id=0-1&p=f&t=a47Jd68ycVXdkjdM-0).\n- [x] Ensure that this component is translatable in the contributor dashboard, by temporarily enabling it in exploration RTEs (e.g. in the hints RTE), and then testing out the translation workflow. Ensure that this new RTE component has behavioural parity with other RTE components in all places which refer to RTE components (e.g. the character-counting logic for hint/solution validation should be updated to handle worked-example RTE components too).\n- [x] Forbid skill descriptions from having more than 2 \"worked example\" components. (Note that this is a bit simpler than the conditional validation described in the PRD.)\n\nThis project needs a technical design doc, which should explain things like:\n- How we would make the new 'worked examples' component appear only in the concept card and revision card RTEs.\n- How the acceptance tests will be structured\n- The full list of parts of the code that have RTE-component-specific logic that needs to be updated to include worked examples\n\n### Milestone 1\n| No. | Description of PR / action | PR Link | Prerequisite steps | PR Created | PR Merged |\n|-----|---------------------------|---------|-------------------|------------|-----------|\n| 12 | Add 'enable_worked_examples_rte_component' feature flag for allowing the creators to add worked examples to the study guide and skill editor rtes. | #22860 | - | <li>- [x] </li> 21 June| <li>- [x] </li> 23 June |\n| 13 | Write a mail to Sean to check there are no existing worked examples in the SkillModels in the datastore. If there are, he will make a note of them so that they can be added later and delete them manually. | N/A (Email) | - | <li>- [x] </li> 23 June| <li>- [x] </li> 24 June |\n| 14 | Remove the Worked example mat card and its display logic from the concept cards. | #22876 | - | <li>- [x] </li> 25 June| <li>- [x] </li> 26 June|\n| 15 | Run migration jobs to remove the worked_examples field from Skill model | #22883 | 12, 13 | <li>- [x] </li> 27 June | <li>- [x] </li> 4 July|\n| 16 | Remove all use of worked_examples and worked_examples_count from the codebase<br>- Remove all places where worked_examples is used in skill_domain.py, concept-card.model.ts and change.model.ts<br>- Remove worked_examples_count from skill-summary.model.ts and augmented-skill-summary.model.ts<br>- Delete worked-example.model.ts | #22883 | 14 | <li>- [x] </li> 29 June | <li>- [x] </li> 4 July |\n| 17 | Make changes to the Skill model, Skill summary model and the affected domain object classes<br>- Remove worked_examples_count from the SkillSummaryModel by following this doc<br>- Make changes to the backend skill services and other files to use the new structure | #22902 | 14, 15 | <li>- [x] </li> 2 July | <li>- [x] </li> 4 July|\n| - | Write a mail to Sean to confirm there are no existing worked examples in the SkillModels in the datastore (to make sure none have been added since the last time we checked) | (Not required) | - | <li>- [ ] </li> 4 July | <li>- [ ] </li> 4 July |\n\n### Milestone 2\n\n| No. | Description of PR / action | PR Link | Prerequisite steps | PR Created | PR Merged |\n|-----|---------------------------|---------|-------------------|------------|-----------|\n| 1 | **(Needs feature flag)** Create the worked example rte component<br>- Add the new property of rte_components to make component display logic uniform across all rtes<br>- Implement logic for the new worked example rte component<br>- Make sure the component previews and displays as expected<br>- Make sure the component is editable | #22964 | M1.12 | <li>- [x] </li> 19 July | <li>- [x] </li> 22 July |\n| 2 | Update the Schemas wiki page for the new schema for the rte components. | [Link to revision](https://github.com/oppia/oppia/wiki/Schemas/_compare/9ed5740da763e3137c2a10734940b057f5364c78)  | 1 | <li>- [x] </li>  23 July| <li>- [x] </li> 23 July |\n| 3 | Enable translations for the worked example rte component<br>- Enable copy tool usage for the worked example rte component<br>- Make sure it is translatable in the contributor dashboard | Done as part of M2.1 #22964  | 1 | <li>- [x] </li> 25 July | <li>- [x] </li> 25 July |\n| 4 | Add a tutorial on how to translate worked example component in the translation guide | [link](https://docs.google.com/document/d/17jMFtfHVWtJYrzyGQUKdsRXgky7lWv76sGYLOxSbA5w/edit?tab=t.0#bookmark=id.487agbs2o2tx) | 1, 3 | <li>- [x] </li> 28 July| <li>- [x] </li> 28 July |\n| 6 | Implement new rendering logic for rte components<br>- Use the rte_components property for all rtes i.e. exploration editor, blog dashboard, etc.<br>- Delete the custom blog dashboard rte component logic<br>- Implement logic to not allow copy and pasting of rte components in non supporting rtes<br>**Note:** There should be no user-visible changes introduced by this PR. This will be verified by checking the following:<br>- The rtes work as expected for all components (make sure the rte_components config is passed everywhere)<br>- The blog dashboard rte shows only the image, link and video component widgets like it did before<br>- (basically a user shouldn't be able to tell that this PR introduced any change to the component rendering logic of the rtes) | #22922 | - | <li>- [x] </li> 2 August | <li>- [x] </li> 3 August|\n| 7 | **(Needs feature flag)** Add worked examples rte component to the skill and study guide editor pages rtes and write the acceptance tests<br>- Only allow skill and study guide page editor rtes to use the worked examples component by using the rte_components property<br>- Implement logic to only allow 2 worked examples in the selected rtes<br>- Ask Sean to re add any worked examples that existed before the changes to the SkillModel | #23037 | M1.11, 1, 3 | <li>- [x] </li> 6 August | <li>- [x] </li> 8 August |\n| 8 | Move the 'enable_worked_examples_rte_component' feature flag to the test stage for testing. | Done as part of #23037| M1.11, M1.13, M1.15, M1.16, M1.17, 1, 3, 6, 7 | <li>- [x] </li> 8 August | <li>- [x] </li> 8 August |\n| 9 | **Demo to PMs/stakeholders:**<br>- Adding worked examples to skills and study guides<br>- Viewing the worked examples<br> | N/A (Demo) | - | <li>- [x] </li> 8 August | <li>- [x] </li> 8 August |\n| 12 | Move the 'enable_worked_examples_rte_component' feature flag to the prod stage (after successful testing and approval from ProdOps Team) | #23613 | M1.11, M1.13, M1.15, M1.16, M1.17, 1, 3, 6, 7, 8 | <li>- [x] </li> 18 October| <li>- [x] </li> 18 October|\n| 16 | Deprecate the 'enable_worked_examples_rte_component' feature flag by removing all references to it (as the feature should be working as expected for 2 weeks by this point) |  | M1.11, M1.13, M1.15, M1.16, M1.17, 1, 3, 6, 7, 8, 12 | <li>- [ ] </li>| <li>- [ ] </li>|\n| 18 | Bug fixes if required |  | M1.11, M1.13, M1.15, M1.16, M1.17, 1, 3, 6, 7, 8, 12 | <li>- [ ] </li>| <li>- [ ] </li>|\n### Additional context\n\nProject PRD: [link](https://docs.google.com/document/d/1QrqTsR1Ew3WfQvj7D83mh0k9HjW6xQ-2dpJGkbe8XqY/edit#heading=h.s68z2sezulra). \n\nMeeting minutes: [link](https://docs.google.com/document/d/1mPWb8kjAix_5AwvX_HVRVMzDQ7Dgw22fTMNLAthBiqE/edit?usp=sharing)\n\nJournal: [link](https://medium.com/@mohitruwatia2312)\n\n[This wiki page](https://github.com/oppia/oppia/wiki/Rich-Text-Editor-%28RTE%29-Overview) has details on how to implement rich-text components.",
+   "created": "2024-02-29",
+   "fix_commit": "600c1fed0b6e82db4d84374ed519dbfdf5ba17c1",
+   "fix_date": "2025-10-17",
+   "keyword_search_revision": "600c1fed0b6e82db4d84374ed519dbfdf5ba17c1^",
+   "fixed_files": [
+    "core/feature_flag_list.py"
+   ]
+  },
+  {
+   "issue": 20015,
+   "split": "large",
+   "group": null,
+   "url": "https://github.com/oppia/oppia/issues/20015",
+   "title": "[BUG]: Some explorations have duplicated content IDs",
+   "body": "### Describe the bug\n\nThe Android download script attempts to create comprehensive snapshots of an exploration by also fetching compatible translations for that exploration and ensuring that cross-versions are sane. During analysis it was discovered that several lessons contain duplicated content IDs which messes up translation & voiceover cross-referencing.\n\n### URL of the page where the issue is observed.\n\nN/A\n\n### Steps To Reproduce\n\nThe following explorations & versions have duplicated content IDs (along with the content IDs):\r\n- xtbP46LKl1uj (version 48) -> solution_137 duped across 3 states:\r\n  - 'Converting commonly used fractions to decimals 2'\r\n  - 'Test 2'\r\n  - 'Test 0'\r\n- ua7FTOXRaRjb (version 19) -> solution_139 duped across 8 states:\r\n  - 'Right angles Q2'\r\n  - 'Squares Q4'\r\n  - 'Triangles Q5'\r\n  - 'Circles Q6'\r\n  - 'Q7'\r\n  - 'Q8'\r\n  - 'Q9'\r\n  - 'Q10'\r\n- sRqParMOyWWB (version 17) -> solution_121 duped across 3 states:\r\n  - 'Scale Factor Q5'\r\n  - 'Measurements Q6'\r\n  - 'Q7'\r\n- Sl4TGJQhSjmk (version 16) -> solution_85 duped across 2 states:\r\n  - 'Q7'\r\n  - 'Q8'\r\n- 2EOuIfQHljkN (version 14):\r\n  - solution_127 duped across 5 states:\r\n    - 'Perimeter Review Q1'\r\n    - 'Perimeter Review Q2'\r\n    - 'Area Q4'\r\n    - 'Q7'\r\n    - 'Final Test'\r\n  - solution_130 duped across 2 states:\r\n    - 'Q9'\r\n    - 'Q12'\n\n### Expected Behavior\n\nIt's expected that content IDs are always unique in the context of a whole lesson (otherwise there would be association issues when looking up text translations & voiceovers).\n\n### Screenshots/Videos\n\n_No response_\n\n### What device are you using?\n\nDesktop\n\n### Operating System\n\nLinux\n\n### What browsers are you seeing the problem on?\n\n_No response_\n\n### Browser version\n\n_No response_\n\n### Additional context\n\nThis clearly seems like an issue with the backend--is it possible to both fix the lessons & ensure that these situations can't recur? While we can temporarily silence the warnings in the script, there's no obvious recovery possible in this case since information is being lost with duplicated content IDs.\n\n### Tips for developers\n\nBefore addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).\r\n\r\nAlso, if this is your first issue, please make sure to follow https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue and https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up before claiming it. Thanks!\r\n",
+   "created": "2024-03-21",
+   "fix_commit": "ea29a277388ec63731d16df94bce17f4be6736b7",
+   "fix_date": "2026-02-06",
+   "keyword_search_revision": "ea29a277388ec63731d16df94bce17f4be6736b7^",
+   "fixed_files": [
+    "core/jobs/batch_jobs/delete_duplicate_content_ids_jobs.py",
+    "core/jobs/registry.py"
+   ]
+  },
+  {
+   "issue": 20124,
+   "split": "large",
+   "group": null,
+   "url": "https://github.com/oppia/oppia/issues/20124",
+   "title": "[BUG]: Running AuditGenerateContributorAdminStatsJob throws a ValueError",
+   "body": "### Describe the bug\n\nOn the test server, running `AuditGenerateContributorAdminStatsJob` throws the following `ValueError`:\r\n\r\n```\r\nValueError: min() arg is an empty sequence [while running 'Transform question contribution stats-ptransform-53'] Worker ID: beamapp-www-data-10270911-\r\n10270211-meyb-harness-7x5w\r\n\r\nat .transform_question_contribution_stats ( /usr/local/lib/python3.8/site-packages/core/jobs/batch_jobs/contributor_admin_stats_jobs.py:577 )\r\nat .<lambda> ( /workspace/core/jobs/batch_jobs/contributor_admin_stats_jobs.py:187 )\r\nat .<lambda> ( /layers/google.python.pip/pip/lib/python3.8/site-packages/apache_beam/transforms/core.py:1714 )\r\nat apache_beam.runners.common.SimpleInvoker.invoke_process ( apache_beam/runners/common.py:537 )\r\nat apache_beam.runners.common.DoFnRunner.process ( apache_beam/runners/common.py:1198 )\r\nat apache_beam.runners.common.DoFnRunner._reraise_augmented ( apache_beam/runners/common.py:1281 )\r\nat apache_beam.runners.common.DoFnRunner.process ( apache_beam/runners/common.py:1200 )\r\nat apache_beam.runners.worker.operations.DoOperation.process ( apache_beam/runners/worker/operations.py:708 )\r\nat apache_beam.runners.worker.operations.DoOperation.process ( apache_beam/runners/worker/operations.py:707 )\r\nat apache_beam.runners.worker.operations.SingletonConsumerSet.receive ( apache_beam/runners/worker/operations.py:215 )\r\nat apache_beam.runners.common._OutputProcessor.process_outputs ( apache_beam/runners/common.py:1361 )\r\nat apache_beam.runners.common.SimpleInvoker.invoke_process ( apache_beam/runners/common.py:536 )\r\nat apache_beam.runners.common.DoFnRunner.process ( apache_beam/runners/common.py:1198 )\r\nat apache_beam.runners.common.DoFnRunner._reraise_augmented ( apache_beam/runners/common.py:1265 )\r\nat apache_beam.runners.common.DoFnRunner.process ( apache_beam/runners/common.py:1200 )\r\nat apache_beam.runners.worker.operations.DoOperation.process ( apache_beam/runners/worker/operations.py:708 )\r\nat apache_beam.runners.worker.operations.DoOperation.process ( apache_beam/runners/worker/operations.py:707 )\r\nat apache_beam.runners.worker.operations.SingletonConsumerSet.receive ( apache_beam/runners/worker/operations.py:215 )\r\nat apache_beam.runners.common._OutputProcessor.process_outputs ( apache_beam/runners/common.py:1361 )\r\nat apache_beam.runners.common.SimpleInvoker.invoke_process ( apache_beam/runners/common.py:536 )\r\nat apache_beam.runners.common.DoFnRunner.process ( apache_beam/runners/common.py:1198 )\r\nat apache_beam.runners.common.DoFnRunner._reraise_augmented ( apache_beam/runners/common.py:1265 )\r\nat apache_beam.runners.common.DoFnRunner.process ( apache_beam/runners/common.py:1200 )\r\nat apache_beam.runners.worker.operations.DoOperation.process ( apache_beam/runners/worker/operations.py:708 )\r\nat apache_beam.runners.worker.operations.DoOperation.process ( apache_beam/runners/worker/operations.py:707 )\r\nat apache_beam.runners.worker.operations.SingletonConsumerSet.receive ( apache_beam/runners/worker/operations.py:215 )\r\nat apache_beam.runners.worker.operations.Operation.output ( apache_beam/runners/worker/operations.py:348 )\r\nat apache_beam.runners.worker.operations.Operation.output ( apache_beam/runners/worker/operations.py:346 )\r\nat .process_encoded ( /usr/local/lib/python3.8/site-packages/apache_beam/runners/worker/bundle_processor.py:221 )\r\nat .process_bundle ( /usr/local/lib/python3.8/site-packages/apache_beam/runners/worker/bundle_processor.py:995 )\r\nat .process_bundle ( /usr/local/lib/python3.8/site-packages/apache_beam/runners/worker/sdk_worker.py:618 )\r\nat .do_instruction ( /usr/local/lib/python3.8/site-packages/apache_beam/runners/worker/sdk_worker.py:580 )\r\nat .<lambda> ( /usr/local/lib/python3.8/site-packages/apache_beam/runners/worker/sdk_worker.py:340 )\r\nat ._execute ( /usr/local/lib/python3.8/site-packages/apache_beam/runners/worker/sdk_worker.py:267 )\r\n```\r\n\r\n\n\n### URL of the page where the issue is observed.\n\n/release-coordinator\n\n### Steps To Reproduce\n\nNOTE: These actions are only reproducible on the test server:\r\n1. Sign in as an administrator ([instructions](https://github.com/oppia/oppia/wiki/How-to-access-Oppia-webpages#log-in-as-a-super-administrator)).\r\n2. Navigate to Admin Page > Roles Tab.\r\n3. Add the \"Release Coordinator\" role to the username you are signed in with.\r\n4. Navigate to the Release Coordinator dashboard (at `/release-coordinator` URL), then to the Beam Jobs tab.\r\n5. Search for `AuditGenerateContributorAdminStatsJob` and then click the Play button.\r\n6. Click \"Start new job\".\n\n### Expected Behavior\n\nRunning `AuditGenerateContributorAdminStatsJob` should complete successfully with no errors and it should not alter the datastore on the test server.\n\n### Screenshots/Videos\n\nJob run result from the UI:\r\n\r\n<img width=\"1181\" alt=\"image\" src=\"https://github.com/oppia/oppia/assets/117241994/f55687f3-d88b-446e-8ad3-50cf2c38ada2\">\r\n\n\n### What device are you using?\n\nDesktop\n\n### Operating System\n\nWindows, Linux\n\n### What browsers are you seeing the problem on?\n\nChrome\n\n### Browser version\n\n_No response_\n\n### Additional context\n\nView this debugging doc to track progress on investigations and attempted solutions:\r\nhttps://docs.google.com/document/d/1iW9sPj-Vn4l-dZZ-_ARohgfradrq__SWPzpLSJT6PVU/edit?usp=sharing\n\n### Tips for developers\n\nBefore addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).\r\n\r\nThen, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).\r\n\r\n**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!\r\n",
+   "created": "2024-04-02",
+   "fix_commit": "8f32784e676880b97870a40f0d349525590f3fbe",
+   "fix_date": "2025-12-01",
+   "keyword_search_revision": "8f32784e676880b97870a40f0d349525590f3fbe^",
+   "fixed_files": [
+    "core/jobs/batch_jobs/contributor_admin_stats_jobs.py"
+   ]
+  },
+  {
+   "issue": 20197,
+   "split": "large",
+   "group": null,
+   "url": "https://github.com/oppia/oppia/issues/20197",
+   "title": "[BUG]: 404 Not Found error on valid collection player page.",
+   "body": "### Describe the bug\r\n\r\nWhen I visit a valid collection player page, I get a 404 Not Found error.\r\n\r\n### URL of the page where the issue is observed.\r\n\r\n/collection/<collection>\r\n\r\n### Steps To Reproduce\r\n\r\n1. Create a new collection (need collection editor rights).\r\n2. Create/add a exploration to the collection and publish it.\r\n3. Go to the collection player of that collection.\r\n\r\n### Expected Behavior\r\n\r\nI expect there to be no 404 Not Found error.\r\n\r\n### Screenshots/Videos\r\n\r\n![Screenshot 2024-04-22 135125](https://github.com/oppia/oppia/assets/70992422/6b73d82e-8464-4e70-8a9f-fc58287c4a75)\r\n\r\n\r\n### What device are you using?\r\n\r\nDesktop\r\n\r\n### Operating System\r\n\r\nWindows\r\n\r\n### What browsers are you seeing the problem on?\r\n\r\nChrome\r\n\r\n### Browser version\r\n\r\n_No response_\r\n\r\n### Additional context\r\nThe other parameter \"key\" error is a different issue which I filed here: #20198.\r\n\r\n### Tips for developers\r\n\r\nBefore addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).\r\n\r\nThen, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).\r\n\r\n**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!\r\n",
+   "created": "2024-04-22",
+   "fix_commit": "8b3b4cec44cd328ca92e02c106f8bdc3172f6bbe",
+   "fix_date": "2025-03-09",
+   "keyword_search_revision": "8b3b4cec44cd328ca92e02c106f8bdc3172f6bbe^",
+   "fixed_files": [
+    "main.py"
+   ]
+  },
+  {
+   "issue": 20332,
+   "split": "large",
+   "group": null,
+   "url": "https://github.com/oppia/oppia/issues/20332",
+   "title": "Beam job to audit Topic and related to models to ensure they are valid",
+   "body": "### Describe the bug\r\n\r\nWrite a bem job to ensure that all Topic models are valid and that their associated models are valid too. https://github.com/oppia/oppia/issues/20289 ensures that there are no future corruption to Topic and related models, however, there needs to be a beam job to \"clean-up\" existing corrupt models on the server. \r\n\r\nMore specifically, ensure that every TopicModel on the server has corresponding TopicRightsModel and TopicSummaryModel. The number of topic models, topic rights models, and topic summary models should be the same on the server.\r\n\r\n### URL of the page where the issue is observed.\r\n\r\nNA\r\n\r\n### Steps To Reproduce\r\n\r\nNA\r\n\r\n### Expected Behavior\r\n\r\nNA\r\n\r\n### Screenshots/Videos\r\n\r\nNA\r\n\r\n### What device are you using?\r\n\r\nDesktop\r\n\r\n### Operating System\r\n\r\nLinux\r\n\r\n### What browsers are you seeing the problem on?\r\n\r\n_No response_\r\n\r\n### Browser version\r\n\r\n_No response_\r\n\r\n### Additional context\r\n\r\n_No response_\r\n\r\n### Tips for developers\r\n\r\nBefore addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).\r\n\r\nThen, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).\r\n\r\n**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!\r\n",
+   "created": "2024-05-21",
+   "fix_commit": "43f7799a1206e88f81ec8f0242eb200832e2768a",
+   "fix_date": "2025-02-17",
+   "keyword_search_revision": "43f7799a1206e88f81ec8f0242eb200832e2768a^",
+   "fixed_files": [
+    "core/jobs/batch_jobs/audit_topic_related_models_relation_jobs.py",
+    "core/jobs/registry.py"
+   ]
+  },
+  {
+   "issue": 20818,
+   "split": "large",
+   "group": null,
+   "url": "https://github.com/oppia/oppia/issues/20818",
+   "title": "[BUG]: The generate dummy topic feature on the admin page is not creating a topic properly",
+   "body": "### Describe the bug\r\n\r\nWe have a feature in the admin tab that generates a topic, but it is not working as expected, not displaying the image on the topic viewer page.\r\n\r\n![image](https://github.com/user-attachments/assets/c89bacf5-7135-4ddb-9af0-9a736f933a2e)\r\n\r\n\r\nThe topic viewer on the topic viewer page and the topic viewer on the topic editor page show different behavior as shown below in the images.\r\n\r\n![image](https://github.com/user-attachments/assets/4e8344ba-8594-483f-ab0d-df4cda62207e)\r\n![image](https://github.com/user-attachments/assets/7cac85b5-e4ac-4340-8539-0aaa0224a6d7)\r\n\r\n\r\n\r\n\r\n\r\n### URL of the page where the issue is observed.\r\n\r\nN/A\r\n\r\n### Steps To Reproduce\r\n\r\n1. Go to the /admin page and assign yourself a curriculum admin role.\r\n2. Look for \"Load dummy new structures data\" and click on Load data.\r\n3. Go to the topic and skill dashboard.\r\n4. open the topic editor with the existing topic.\r\n5. Preview it in the topic editor.\r\n\r\n\r\n\r\n\r\n### Expected Behavior\r\n\r\n- It should have a published topic that contains a story with 3 explorations, as well as 3 skills (two of which are in a subtopic). There is a question attached to each of the two skills in the subtopic, and 3 questions attached to the remaining uncategorized skill. Translation and practice question opportunities are populated on the Contributor Dashboard.\r\n\r\n- It should show the image in the topic viewer.\r\n- The topic viewer on the topic viewer page and the topic viewer on the topic editor page should have similar behavior.\r\n\r\n### Screenshots/Videos\r\n\r\n_No response_\r\n\r\n### What device are you using?\r\n\r\nDesktop\r\n\r\n### Operating System\r\n\r\nLinux\r\n\r\n### What browsers are you seeing the problem on?\r\n\r\nOther\r\n\r\n### Browser version\r\n\r\n_No response_\r\n\r\n### Additional context\r\n\r\n_No response_\r\n\r\n### Tips for developers\r\n\r\nBefore addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).\r\n\r\nThen, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).\r\n\r\n**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!\r\n",
+   "created": "2024-08-11",
+   "fix_commit": "8303aa98943448e8949d4aaea9bd35d5ea97ff37",
+   "fix_date": "2025-02-27",
+   "keyword_search_revision": "8303aa98943448e8949d4aaea9bd35d5ea97ff37^",
+   "fixed_files": [
+    "core/controllers/admin.py",
+    "core/controllers/topic_editor.py"
+   ]
+  },
+  {
+   "issue": 21017,
+   "split": "large",
+   "group": null,
+   "url": "https://github.com/oppia/oppia/issues/21017",
+   "title": "[BUG]: Perform state schema migration on exp data obtained from cache",
+   "body": "### Describe the bug\n\nThe following code performs deserialization of exploration JSON data fetched from the cache: https://github.com/oppia/oppia/blob/c416f04691f436ec6dd2270edef2c08eb0c488d8/core/domain/exp_domain.py#L5827-L5837\r\n\r\nThis is unsafe as we perform a \"from_dict\" operation on data that may be outdated (e.g. a new field may have been introduced since the data had been cached.)\r\n\r\nIn order to prevent unexpected parsing errors or other failures, it migth be better to perform a state schema migration on the exploration dict before executing the \"from_dict\" method.  \n\n### URL of the page where the issue is observed.\n\nNA\n\n### Steps To Reproduce\n\nNA - Not a user facing issue.\n\n### Expected Behavior\n\nEnsure that exploration data fetched from the cache undergoes a state schema migration.\n\n### Screenshots/Videos\n\n_No response_\n\n### What device are you using?\n\nDesktop\n\n### Operating System\n\nLinux\n\n### What browsers are you seeing the problem on?\n\n_No response_\n\n### Browser version\n\n_No response_\n\n### Additional context\n\n_No response_\n\n### Tips for developers\n\nBefore addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).\r\n\r\nThen, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).\r\n\r\n**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!\r\n",
+   "created": "2024-09-29",
+   "fix_commit": "1e8480b8163220c0e027f3ac08e32626548d2a49",
+   "fix_date": "2025-01-26",
+   "keyword_search_revision": "1e8480b8163220c0e027f3ac08e32626548d2a49^",
+   "fixed_files": [
+    "core/domain/exp_domain.py"
+   ]
+  },
+  {
+   "issue": 21030,
+   "split": "large",
+   "group": null,
+   "url": "https://github.com/oppia/oppia/issues/21030",
+   "title": "[Feature Request]: Upgrade ElasticSearch from 7.17.0 to 8.15.2",
+   "body": "### Is your feature request related to a problem? Please describe.\r\n\r\nWe have been notified by the ElasticSearch team that the version of ElasticSearch we are using, 7.17.0, is reaching end-of-life and that, for continued support, we would need to upgrade to the latest 8.15.x version (which, as of this writing, seems to be 8.15.2).\r\n\r\nThis issue is created to track this upgrade.\r\n\r\n### Describe the solution (or solutions) you'd like\r\n\r\n1. Change 7.17.0 to 8.15.2 throughout the codebase. Examine the list of breaking changes from 7.17.0 to 8.15.2, and ensure they are addressed as part of the upgrade PR. Test that the functionality works locally, and open the upgrade PR.\r\n2. Submit a testing request on the backup server following the instructions in the PR description template (and also [here](https://github.com/oppia/oppia/wiki/Testing-jobs-and-other-features-on-production)). Ensure that search works correctly there. If any configuration changes need to be made in the GCP environment, keep a record of those and ensure that they are included in the job run instructions for when the actual release takes place.\r\n3. If the test in (2) is successful, merge the PR and get it deployed to production. Ensure that any GCP-related steps are executed in both the test and prod environments as well.\r\n\r\n### Describe alternatives you've considered and rejected\r\n\r\n_No response_\r\n\r\n### Additional context\r\n\r\n_No response_",
+   "created": "2024-10-03",
+   "fix_commit": "ad8f48ed34b796ef3ed8d56b1b181b492cdab904",
+   "fix_date": "2025-12-17",
+   "keyword_search_revision": "ad8f48ed34b796ef3ed8d56b1b181b492cdab904^",
+   "fixed_files": [
+    "core/feconf.py",
+    "core/platform/search/elastic_search_services.py"
+   ]
+  },
+  {
+   "issue": 21087,
+   "split": "large",
+   "group": null,
+   "url": "https://github.com/oppia/oppia/issues/21087",
+   "title": "[BUG]: Removing picture is allowed when reviewing translation",
+   "body": "### Describe the bug\r\n\r\nRemoving picture is allowed when reviewing translation\r\nWhen submitting translation, users are required to keep the original picture in their translation, however, when reviewers edit the transition, they can remove the picture and no error will appear\r\n\r\n### URL of the page where the issue is observed.\r\n\r\nhttps://www.oppiatestserver.org/contributor-dashboard\r\n\r\n### Steps To Reproduce\r\n\r\n**Preconditions:**\r\nuser has to have translation reviewer permissions, a translation with picture is submitted to review\r\n\r\n- Steps:\r\n\r\n1. Log in to Oppia as a Contributor\r\n2. Navigate to Contributor dashboard\r\n3. Select Review Translation Tab\r\n4. Open a translation to review (with picture)\r\n5. Click \"Edit\"\r\n6. Remove picture\r\n7. Click \"Update\"\r\n8. Click \"Accept and review next\"\r\n\r\n\r\n### Expected Behavior\r\n\r\nError message should appear saying that removing picture is not allowed\r\n\r\n### Screenshots/Videos\r\n\r\n\r\nhttps://github.com/user-attachments/assets/38641e4f-5d02-4c1a-93ca-a3948f305362\r\n\r\n\r\n\r\n### What device are you using?\r\n\r\nDesktop\r\n\r\n### Operating System\r\n\r\nMacOS\r\n\r\n### What browsers are you seeing the problem on?\r\n\r\nChrome, Firefox\r\n\r\n### Browser version\r\n\r\nChrome 126.0.6478.57, Firefox 127.0\r\n\r\n### Additional context\r\n\r\n_No response_\r\n\r\n### Tips for developers\r\n\r\nBefore addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).\r\n\r\nThen, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).\r\n\r\n**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!\r\n",
+   "created": "2024-10-09",
+   "fix_commit": "47fd99681afaabd88dd39d9e0f6c1a3a3cdd65ab",
+   "fix_date": "2025-04-13",
+   "keyword_search_revision": "47fd99681afaabd88dd39d9e0f6c1a3a3cdd65ab^",
+   "fixed_files": [
+    "core/domain/suggestion_services.py"
+   ]
+  },
+  {
+   "issue": 21091,
+   "split": "large",
+   "group": null,
+   "url": "https://github.com/oppia/oppia/issues/21091",
+   "title": "[Feature Request]: Diagnostic test enable/disable option from classroom admin page",
+   "body": "### Is your feature request related to a problem? Please describe.\r\n\r\nCurrently, the diagnostic test ([Take quiz button](https://oppiaserver-backup-migration.appspot.com/learn/math)) is only ready for the math classroom and the functionality is hidden behind a feature flag (DIAGNOSTIC_TEST).\r\n\r\nThe feature flag for diagnostic test is able to hide/unhide the diagnostic test as a whole irrespective of checking the classroom. It might be possible for some classrooms where the diagnostic test is not ready, for example, we add an unpublished topic to a published classroom (those topics that are tagged as\u201ccoming soon\u201d).\r\n\r\nNow those classrooms will cause errors while running the diagnostic test because topics are not completely ready.\r\n,\r\n\r\n### Describe the solution (or solutions) you'd like\r\n\r\nAdd a toggle button in the classroom editor of the classroom admin page (/classroom-admin) so that curriculum admins can enable/disable the diagnostic test for a classroom. When merging the PR, ask the release coordinators to turn on this toggle for the Math classroom only.\r\n\r\nAlso, remove the second condition from here once this is done: https://github.com/oppia/oppia/pull/21092/files#diff-41d1a493df5979dcfbab1562ad2fc368f47fb6dc78cb71a8324935de8d1e5d8bR260.\r\n\r\nSample image of classroom editor:\r\n\r\n![Screenshot from 2024-10-09 12-35-04](https://github.com/user-attachments/assets/dd7e3d8a-dff5-443c-9848-b7e3924d4769)\r\n\r\n\r\n### Describe alternatives you've considered and rejected\r\n\r\n_No response_\r\n\r\n### Additional context\r\n\r\nFor clarification reach out to @Nik-09 (nikhil.agarwal.2019@gmail.com)",
+   "created": "2024-10-09",
+   "fix_commit": "cfb21a1110d487f47734427eb133f5692e17026e",
+   "fix_date": "2025-03-02",
+   "keyword_search_revision": "cfb21a1110d487f47734427eb133f5692e17026e^",
+   "fixed_files": [
+    "core/controllers/admin.py",
+    "core/controllers/classroom.py",
+    "core/domain/classroom_config_domain.py",
+    "core/domain/classroom_config_services.py",
+    "core/feconf.py",
+    "core/storage/classroom/gae_models.py"
+   ]
+  },
+  {
+   "issue": 21247,
+   "split": "large",
+   "group": null,
+   "url": "https://github.com/oppia/oppia/issues/21247",
+   "title": "[Feature Request]: Filter contribution/review opportunities on the basis of classrooms",
+   "body": "### Is your feature request related to a problem? Please describe.\n\n we might need to make a few changes on the contributor dashboard to support multiple classrooms properly (for both translators and practice question submitters). Currently, in the list of contribution/review opportunities there is a dropdown menu that filters based on the topic, and it just has a list of math topic names.\n\n### Describe the solution (or solutions) you'd like\n\nIt might make sense to update that dropdown to show something like this instead (where the bold parts just serve as headers and aren't selectable):\n- **Math**\n  - Addition and Subtraction\n  - Place Values\n.  - ..\n- **Science**\n  - Light Energy\n  - Scientific Principles\n  - ... \n\n**Note**: In the case where there's just one classroom, please omit the bold parts (Math, etc.).\n\n### Describe alternatives you've considered and rejected\n\n_No response_\n\n### Additional context\n\n_No response_",
+   "created": "2024-11-12",
+   "fix_commit": "f9adb85fbb3047010309b80a17e5287877caebbb",
+   "fix_date": "2025-02-14",
+   "keyword_search_revision": "f9adb85fbb3047010309b80a17e5287877caebbb^",
+   "fixed_files": [
+    "core/controllers/contributor_dashboard.py",
+    "main.py"
+   ]
+  },
+  {
+   "issue": 21429,
+   "split": "large",
+   "group": null,
+   "url": "https://github.com/oppia/oppia/issues/21429",
+   "title": "[Feature Request]: Restrict Special Characters in Autogenerated Image Filenames for Security and Compatibility",
+   "body": "### Is your feature request related to a problem? Please describe.\r\n\r\nCurrently, we need to strengthen our filename validation to prevent potential security issues with special characters in image filenames. The validation needs to happen at the request handler level to ensure files are validated before any processing occurs.\r\n\r\nLocation of the change:\r\n- core/domain/editor.py in the ImageUploadHandler class's HANDLER_ARGS_SCHEMAS.\r\n\r\nThis helps prevent:\r\n- Security vulnerabilities like XSS, path traversal, or injection attacks from malicious filenames\r\n- Compatibility issues when filenames are used in URLs or external systems\r\n- Multiple extension attacks (e.g., malicious.php.svg)\r\n- Unicode/non-ASCII character issues\r\n\r\n\r\n\r\n### Describe the solution (or solutions) you'd like\r\n\r\nAdd validation in image_validation_services.py to restrict filenames to only allow:\r\n* Alphanumeric characters (a-z, A-Z, 0-9)\r\n* Hyphens (-)\r\n* Underscores (_)\r\n* Periods (.) for extensions\r\n\r\nThe validation uses the regex pattern `^[a-zA-Z0-9\\-_]+\\.[a-zA-Z0-9]+$` which:\r\n- Anchors the pattern to start and end of string\r\n- Explicitly defines allowed characters\r\n- Prevents multiple extensions and special characters\r\n- Ensures early validation at the request handler level\r\n\r\n### Describe alternatives you've considered and rejected\r\n\r\n_No response_\r\n\r\n### Additional context\r\n\r\n\r\nhttps://github.com/user-attachments/assets/2f73759c-328d-4414-bf5b-a72b4758374b\r\n\r\n",
+   "created": "2024-12-12",
+   "fix_commit": "620376e5beb7634bd9fcc7e9614f149d20dc278d",
+   "fix_date": "2025-02-02",
+   "keyword_search_revision": "620376e5beb7634bd9fcc7e9614f149d20dc278d^",
+   "fixed_files": [
+    "core/controllers/editor.py",
+    "core/utils.py"
+   ]
+  },
+  {
+   "issue": 21559,
+   "split": "large",
+   "group": null,
+   "url": "https://github.com/oppia/oppia/issues/21559",
+   "title": "[BUG]: There are some duplicate translation suggestions for a given language",
+   "body": "### Describe the bug\n\nThere are duplicated translation suggestions for the same content ID and exploration ID for a given language (in this case \u201chi\u201d). Analysis for the same for 'hi' language code: https://docs.google.com/spreadsheets/d/10h5WFWV2tT7aGB-viHIwbtOameniAbfGC3X0SvV0glk/edit?gid=61502005#gid=61502005. \nThis sometimes show translations opportunities in contributor dashboard, but when the opportunity card is opened, there are no translations available. \nThis issue is a part of https://github.com/oppia/oppia/issues/19276.\ndebugging doc: https://docs.google.com/document/d/1-Ewg7yJkyVohRchx3mcYcNdgdG_6pz53ah7MJtzWrzc/edit?tab=t.0\n\nOther resources: https://docs.google.com/document/d/1_The7JKpgicOAH4mLRSmzdsWJmi8wFs8nHXxOUepV-k/edit?tab=t.0\n\n### URL of the page where the issue is observed.\n\nhttps://www.oppia.org/contributor-dashboard#\n\n### Steps To Reproduce\n\nNot reproducible locally.\n\n### Expected Behavior\n\nThere should be no duplicate translation suggestions in the datastore.\n\n### Screenshots/Videos\n\n_No response_\n\n### What device are you using?\n\nDesktop\n\n### Operating System\n\nWindows\n\n### What browsers are you seeing the problem on?\n\nChrome\n\n### Browser version\n\nVersion 119.0.6045.202 (Official Build) (64-bit)\n\n### Additional context\n\nWe can approach this issue like:\n1. First, we need to investigate, whether the root cause is solved, if not then first we have to solve it.\n2. Implement a beam job to correct the datastore if needed.\n\n### Tips for developers\n\nBefore addressing the bug, please identify which PR caused the issue (you can follow the steps [here](https://github.com/oppia/oppia/wiki/How-to-find-the-commit-which-introduced-a-bug)). If you identify the PR, comment on the issue with a link to it. If not, mention the commit hash of the oldest commit you saw the bug on (and the month and year it was made in).\n\nThen, please leave a comment with details of the approach that you plan to take to fix the issue (see [example](https://github.com/oppia/oppia/issues/19157#issuecomment-1858788463)).\n\n**Note:** If this is your first Oppia issue, please make sure to follow our guidelines for [choosing an issue](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#choosing-a-good-first-issue) and [setting things up](https://github.com/oppia/oppia/wiki/Contributing-code-to-Oppia#setting-things-up). You will also need to show a demo of the fix working correctly on your local machine. Thanks!\n",
+   "created": "2024-12-28",
+   "fix_commit": "e51228ff18fb517c488fd166217fa1e50da83662",
+   "fix_date": "2026-04-02",
+   "keyword_search_revision": "e51228ff18fb517c488fd166217fa1e50da83662^",
+   "fixed_files": [
+    "core/jobs/batch_jobs/cleanup_duplicate_translation_suggestions_jobs.py",
+    "core/jobs/batch_jobs/suggestion_migration_jobs.py",
+    "core/jobs/registry.py"
+   ]
+  },
+  {
+   "issue": 21722,
+   "split": "large",
+   "group": null,
+   "url": "https://github.com/oppia/oppia/issues/21722",
+   "title": "[Feature Request]: Need support to download questions from Android data handler",
+   "body": "### Is your feature request related to a problem? Please describe.\n\nWe want to be able to test out questions in the Android app alpha track, but there's currently no reliable way to source questions data in the asset download script for the app (the best we can do is to use the same exposed randomized sampling endpoint that web uses).\n\n### Describe the solution (or solutions) you'd like\n\nIntroduce new API support in the Android data controller to fetch all questions mapped to a specific skill ID.\n\n### Describe alternatives you've considered and rejected\n\n_No response_\n\n### Additional context\n\n_No response_",
+   "created": "2025-01-15",
+   "fix_commit": "e71df8c20a8e568d3ad2d709a41c38984abe1455",
+   "fix_date": "2025-10-07",
+   "keyword_search_revision": "e71df8c20a8e568d3ad2d709a41c38984abe1455^",
+   "fixed_files": [
+    "core/controllers/android.py",
+    "core/domain/exp_fetchers.py",
+    "core/domain/question_fetchers.py",
+    "core/domain/skill_fetchers.py",
+    "core/domain/story_fetchers.py",
+    "core/domain/subtopic_page_services.py",
+    "core/domain/topic_fetchers.py",
+    "core/domain/translation_fetchers.py",
+    "core/storage/base_model/gae_models.py",
+    "core/storage/question/gae_models.py",
+    "core/storage/translation/gae_models.py"
+   ]
+  },
+  {
+   "issue": 21882,
+   "split": "large",
+   "group": null,
+   "url": "https://github.com/oppia/oppia/issues/21882",
+   "title": "Validation failed: is_valid_algebraic_expression",
+   "body": "<!--\n  - Before filing a new issue, please do a quick search to check that it hasn't\n  - already been filed on the [issue tracker](https://github.com/oppia/oppia/issues)._\n  -->\n\nThis error occurred recently in production:\n\n```\nException raised at https://www.oppia.org/explorehandler/answer_submitted_event/XXX: Validation failed: is_valid_algebraic_expression ({}) for object V = uab\nTraceback (most recent call last):\n  File \"/layers/google.python.pip/pip/lib/python3.9/site-packages/webapp2.py\", line 604, in dispatch\n    return method(*args, **kwargs)\n  File \"/workspace/core/controllers/acl_decorators.py\", line 258, in test_can_play\n    return handler(self, exploration_id, **kwargs)\n  File \"/workspace/core/controllers/reader.py\", line 885, in post\n    normalized_answer = old_interaction_instance.normalize_answer(answer)\n  File \"/workspace/extensions/interactions/base.py\", line 212, in normalize_answer\n    object_registry.Registry.get_object_class_by_type(\n  File \"/workspace/extensions/objects/models/objects.py\", line 186, in normalize\n    return schema_utils.normalize_against_schema(raw, cls.get_schema())\n  File \"/workspace/core/schema_utils.py\", line 308, in normalize_against_schema\n    raise AssertionError(\nAssertionError: Validation failed: is_valid_algebraic_expression ({}) for object V = uab\n```\n\n**Where did the error occur?** Add the page the error occurred on.\n/explorehandler/answer_submitted_event/XXX\n\n**Which release did the error occur in?** Add the Oppia release version associated with the error.\n3-4-3-hotfix-3\n\n**Frequency of occurrence** Add details about how many times the error occurred within a given time period (e.g. the last week, the last 30 days, etc.). This helps issue triagers establish severity.\n8 occurences in 30 days.\n\n**Additional context** Add any other context that would be useful. Make sure to anonymize user data like user IDs, exploration IDs, state names, user names, etc. Replace any personal data with appropriate placeholders.\n\n**Reproduction steps** If possible, add reproduction steps, otherwise delete this section.\n\n**General instructions for contributors**\nIn general, the procedure for fixing server errors should be the following:\n\n- Analyze the code in the file where the error occurred and come up with a hypothesis for the reason.\n- Based on your hypothesis, determine a list of steps that reliably reproduce the issue (or confirm any repro instructions that have been provided). For example, if your hypothesis is that the issue arises due to a delay in a response from the backend server, try to change the code so that the backend server always has a delay, and see if the error then shows up 100% of the time on your local machine.\n- Explain your proposed fix, the logic behind it, and any other findings/context you have on this thread. You can also link to a [debugging doc](https://docs.google.com/document/d/1qRbvKjJ0A7NPVK8g6XJNISMx_6BuepoCL7F2eIfrGqM/edit) if you prefer.\n- Get your approach validated by an Oppia team member.\n- Make a PR that fixes the issue.\n",
+   "created": "2025-02-09",
+   "fix_commit": "64ff84693d0e045d9e3955878abb15e8922aaf86",
+   "fix_date": "2026-04-05",
+   "keyword_search_revision": "64ff84693d0e045d9e3955878abb15e8922aaf86^",
+   "fixed_files": [
+    "core/controllers/reader.py",
+    "core/schema_utils.py"
+   ]
+  },
+  {
+   "issue": 21969,
+   "split": "large",
+   "group": null,
+   "url": "https://github.com/oppia/oppia/issues/21969",
+   "title": "Implement a BaseValidationJob for all base model subclasses",
+   "body": "Implement a `BaseValidationJob` for all base model subclasses. See https://github.com/oppia/oppia/issues/21869 which depends on this.",
+   "created": "2025-02-21",
+   "fix_commit": "68f4af73f7c08e6e5e67adb3d70cd0b5c0f90cc6",
+   "fix_date": "2025-06-20",
+   "keyword_search_revision": "68f4af73f7c08e6e5e67adb3d70cd0b5c0f90cc6^",
+   "fixed_files": [
+    "core/jobs/batch_jobs/audit_topic_related_models_relation_jobs.py",
+    "core/jobs/batch_jobs/datastore_audit/__init__.py",
+    "core/jobs/batch_jobs/datastore_audit/base_validation_jobs.py",
+    "core/jobs/batch_jobs/model_validation_jobs.py",
+    "core/jobs/decorators/validation_decorators.py",
+    "core/jobs/types/base_validation_errors.py",
+    "core/jobs/types/blog_validation_errors.py",
+    "core/jobs/types/feedback_validation_errors.py",
+    "core/jobs/types/improvements_validation_errors.py",
+    "core/jobs/types/topic_validation_errors.py",
+    "core/jobs/types/user_validation_errors.py"
+   ]
+  }
+ ]
+}
