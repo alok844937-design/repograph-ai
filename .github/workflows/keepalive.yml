@@ -1,0 +1,33 @@
+name: Keep FalkorDB awake
+
+on:
+  schedule:
+    - cron: "17 */12 * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install falkordb
+      - name: Query the graph
+        env:
+          FALKOR_HOST: ${{ secrets.FALKOR_HOST }}
+          FALKOR_PORT: ${{ secrets.FALKOR_PORT }}
+          FALKOR_USERNAME: ${{ secrets.FALKOR_USERNAME }}
+          FALKOR_PASSWORD: ${{ secrets.FALKOR_PASSWORD }}
+        run: |
+          python -c "
+          import os
+          from falkordb import FalkorDB
+          db = FalkorDB(host=os.environ['FALKOR_HOST'],
+                        port=int(os.environ['FALKOR_PORT']),
+                        username=os.environ['FALKOR_USERNAME'],
+                        password=os.environ['FALKOR_PASSWORD'])
+          rows = db.select_graph('repograph').ro_query(
+              'MATCH (n) RETURN count(n)').result_set
+          print('nodes:', rows[0][0])
+          "
