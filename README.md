@@ -7,7 +7,7 @@ Give it an Oppia issue. It walks a graph of Oppia's git history, GitHub issues a
 [![Tests](https://github.com/alok844937-design/repograph-ai/actions/workflows/tests.yml/badge.svg)](https://github.com/alok844937-design/repograph-ai/actions/workflows/tests.yml)
 
 - **Live demo:** https://repograph-ai-cinoibbc8myjvoe8si5tk9.streamlit.app/
-- **Demo video:** coming soon
+- **Demo video:** https://youtu.be/FjhqzvyKOs0
 - Built for **Graph Hacks** (WeMakeDevs x FalkorDB), track 1: *Agents That Act on Connected Data*.
 
 > This is a prototype. It covers Oppia's **backend Python code only**, and the measured gain over keyword search is modest. Both points are explained below.
